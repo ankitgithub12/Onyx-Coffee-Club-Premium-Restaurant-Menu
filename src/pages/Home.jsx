@@ -40,7 +40,7 @@ const Home = () => {
     <div className="pb-16">
 
       {/* ── Hero Section ── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden select-none">
+      <section className="relative min-h-screen flex items-center justify-center pt-28 pb-12 overflow-hidden select-none">
 
         {/* Warm layered background */}
         <div className="absolute inset-0 hero-gradient opacity-95" />

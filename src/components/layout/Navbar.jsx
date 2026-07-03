@@ -48,20 +48,22 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
 
           {/* Logo / Brand */}
-          <div
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-2.5 cursor-pointer group"
-          >
-            <div className="h-10 w-10 rounded-xl overflow-hidden border-2 border-amber-300/50 flex items-center justify-center shadow-sm group-hover:border-amber-400 group-hover:scale-105 transition-all duration-300 bg-white">
-              <img src={logoImg} alt="ONYX Logo" className="h-full w-full object-cover" />
-            </div>
-            <div className="flex flex-col leading-tight">
-              <span className="font-playfair font-extrabold text-xl tracking-wider text-amber-800 uppercase group-hover:text-amber-600 transition-colors">
-                ONYX
-              </span>
-              <span className="text-[10px] uppercase tracking-[0.25em] text-amber-600/80 font-semibold">
-                Coffee Club
-              </span>
+          <div className="flex-1 flex justify-start">
+            <div
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center gap-2.5 cursor-pointer group"
+            >
+              <div className="h-10 w-10 rounded-xl overflow-hidden border-2 border-amber-300/50 flex items-center justify-center shadow-sm group-hover:border-amber-400 group-hover:scale-105 transition-all duration-300 bg-white">
+                <img src={logoImg} alt="ONYX Logo" className="h-full w-full object-cover" />
+              </div>
+              <div className="flex flex-col leading-tight">
+                <span className="font-playfair font-extrabold text-xl tracking-wider text-amber-800 uppercase group-hover:text-amber-600 transition-colors">
+                  ONYX
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.25em] text-amber-600/80 font-semibold">
+                  Coffee Club
+                </span>
+              </div>
             </div>
           </div>
 
@@ -84,27 +86,27 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Desktop Toolbar */}
-          <div className="hidden md:flex items-center gap-3">
-
-            {/* Search */}
-            <button
-              onClick={triggerSearchFocus}
-              className="p-2.5 rounded-full hover:bg-amber-100 text-stone-600 hover:text-amber-700 transition-all duration-200 cursor-pointer"
-              title="Search Menu"
-            >
-              <FaSearch className="text-base" />
-            </button>
-          </div>
-
-          {/* Mobile Toolbar */}
-          <div className="md:hidden flex items-center gap-2">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-full hover:bg-amber-100 text-stone-700 cursor-pointer"
-            >
-              {mobileMenuOpen ? <FaTimes className="text-lg" /> : <FaBars className="text-lg" />}
-            </button>
+          {/* Toolbar (Desktop & Mobile) */}
+          <div className="flex-1 flex justify-end items-center gap-3">
+            {/* Desktop Search */}
+            <div className="hidden md:flex items-center">
+              <button
+                onClick={triggerSearchFocus}
+                className="p-2.5 rounded-full hover:bg-amber-100 text-stone-600 hover:text-amber-700 transition-all duration-200 cursor-pointer"
+                title="Search Menu"
+              >
+                <FaSearch className="text-base" />
+              </button>
+            </div>
+            {/* Mobile Menu Button */}
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2.5 rounded-full hover:bg-amber-100 text-stone-700 cursor-pointer"
+              >
+                {mobileMenuOpen ? <FaTimes className="text-lg" /> : <FaBars className="text-lg" />}
+              </button>
+            </div>
           </div>
 
         </div>
