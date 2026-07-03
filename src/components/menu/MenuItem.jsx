@@ -9,7 +9,7 @@ const MenuItem = ({ item }) => {
 
   return (
     <div
-      className="group flex flex-col border-b border-amber-50 py-3 transition-all duration-200 hover:bg-amber-50/60 px-2 rounded-xl"
+      className="group flex flex-col border-b border-amber-50/50 py-3 transition-all duration-300 hover:bg-amber-50/40 hover:shadow-[0_2px_12px_rgba(146,64,14,0.03)] px-2 rounded-xl"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -22,13 +22,13 @@ const MenuItem = ({ item }) => {
           {item.veg && <span className="veg-dot flex-shrink-0" title="Vegetarian" />}
 
           <div className="flex flex-col min-w-0">
-            <span className="font-semibold text-xs sm:text-sm text-stone-800 group-hover:text-amber-800 transition-colors truncate font-inter">
+            <span className="font-semibold text-xs sm:text-sm text-stone-800 group-hover:text-amber-900 transition-colors truncate font-inter">
               {item.name}
             </span>
 
             {item.popular && (
               <div className="mt-0.5 self-start">
-                <span className="inline-flex items-center gap-0.5 text-[9px] font-bold uppercase tracking-wider text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded-full">
+                <span className="inline-flex items-center gap-0.5 text-[8.5px] font-bold uppercase tracking-wider text-amber-700 bg-amber-50/90 border border-amber-200/50 px-1.5 py-0.5 rounded-full shadow-sm">
                   ⭐ Popular
                 </span>
               </div>
@@ -38,7 +38,7 @@ const MenuItem = ({ item }) => {
 
         {/* Col 2: Price */}
         <div className="col-span-2 text-right">
-          <MenuPrice price={item.price} />
+          <MenuPrice price={item.price} className="font-bold text-stone-800 group-hover:text-amber-800 transition-colors" />
         </div>
 
         {/* Col 3: Main Ingredient */}
@@ -55,8 +55,8 @@ const MenuItem = ({ item }) => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="overflow-hidden mt-1.5 text-left pl-5"
+            transition={{ duration: 0.25, cubicBezier: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden mt-2 text-left pl-3.5 border-l-2 border-amber-300/40 ml-4"
           >
             <p className="text-[11px] text-stone-500 font-inter leading-relaxed max-w-xl">
               {item.description}

@@ -17,43 +17,43 @@ const Footer = () => {
 
         {/* Upper Slogan Banner */}
         <div className="text-center mb-12 border-b border-amber-400/20 pb-10">
-          <div className="inline-flex items-center justify-center p-4 rounded-full mb-5 bg-amber-400/20 backdrop-blur-sm">
-            <FaCoffee className="text-3xl text-amber-300 animate-float" />
+          <div className="inline-flex items-center justify-center p-4.5 rounded-full mb-5 bg-amber-400/10 border border-amber-400/20 backdrop-blur-sm">
+            <FaCoffee className="text-3xl text-amber-300 animate-float-slow" />
           </div>
-          <h3 className="font-playfair text-xl md:text-3xl font-bold tracking-wider text-amber-200 uppercase">
+          <h3 className="font-playfair text-xl md:text-3xl font-extrabold tracking-wider text-amber-100 uppercase">
             Thank You For Choosing Onyx Coffee Club
           </h3>
-          <div className="flex items-center justify-center gap-3 mt-3">
-            <div className="h-px w-12 bg-amber-400/40" />
-            <FaLeaf className="text-amber-400 text-xs" />
-            <p className="font-merriweather italic text-amber-300/80 text-sm md:text-base">
+          <div className="flex items-center justify-center gap-3 mt-4">
+            <div className="h-px w-12 bg-amber-400/30" />
+            <FaLeaf className="text-amber-400 text-[10px]" />
+            <p className="font-merriweather italic text-amber-200/90 text-sm md:text-base">
               We Serve Coffee With Serenity
             </p>
-            <FaLeaf className="text-amber-400 text-xs" />
-            <div className="h-px w-12 bg-amber-400/40" />
+            <FaLeaf className="text-amber-400 text-[10px]" />
+            <div className="h-px w-12 bg-amber-400/30" />
           </div>
         </div>
 
         {/* Info Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 font-inter">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 font-inter">
 
           {/* Working Hours */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-3">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-3.5 p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm shadow-md transition-all duration-300 hover:bg-white/[0.06] hover:border-amber-400/30">
             <h4 className="font-playfair text-lg font-bold text-amber-300 tracking-wide uppercase flex items-center gap-2">
               <FaClock className="text-amber-400 text-sm" />
               <span>Opening Hours</span>
             </h4>
-            <ul className="text-amber-100/70 text-sm space-y-1.5">
+            <ul className="text-amber-100/70 text-sm space-y-1.5 w-full">
               <li>Monday – Friday: 8:00 AM – 11:00 PM</li>
               <li>Saturday – Sunday: 9:00 AM – 12:00 AM</li>
-              <li className="text-amber-400 text-[11px] font-semibold tracking-wider mt-2 uppercase">
+              <li className="text-amber-400 text-[10px] font-bold tracking-wider mt-2.5 uppercase border-t border-white/5 pt-2">
                 Kitchen closes 30 mins before closing
               </li>
             </ul>
           </div>
 
           {/* Location */}
-          <div className="flex flex-col items-center text-center space-y-3">
+          <div className="flex flex-col items-center text-center space-y-3.5 p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm shadow-md transition-all duration-300 hover:bg-white/[0.06] hover:border-amber-400/30">
             <h4 className="font-playfair text-lg font-bold text-amber-300 tracking-wide uppercase flex items-center gap-2">
               <FaMapMarkerAlt className="text-amber-400 text-sm" />
               <span>Our Location</span>
@@ -65,12 +65,12 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="flex flex-col items-center md:items-end text-center md:text-right space-y-3">
+          <div className="flex flex-col items-center md:items-end text-center md:text-right space-y-3.5 p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm shadow-md transition-all duration-300 hover:bg-white/[0.06] hover:border-amber-400/30">
             <h4 className="font-playfair text-lg font-bold text-amber-300 tracking-wide uppercase flex items-center gap-2">
               <FaPhoneAlt className="text-amber-400 text-sm" />
               <span>Get In Touch</span>
             </h4>
-            <div className="text-amber-100/70 text-sm space-y-1.5">
+            <div className="text-amber-100/70 text-sm space-y-1.5 w-full">
               <p className="flex items-center justify-center md:justify-end gap-2">
                 <FaPhoneAlt className="text-amber-400 text-xs" />
                 <span>+91 94146 44988</span>
@@ -80,20 +80,20 @@ const Footer = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="flex flex-col md:flex-row items-center justify-between border-t border-amber-400/15 pt-6 text-xs text-amber-200/60 font-inter gap-4">
+        <div className="flex flex-col md:flex-row items-center justify-between border-t border-amber-400/15 pt-6 text-xs text-amber-200/50 font-inter gap-4">
           <p>© {currentYear} ONYX Coffee Club. All rights reserved. Created with Serenity.</p>
 
           {/* Social Icons */}
           <div className="flex gap-3">
             {[
-              { href: 'https://wa.me/919414644988', icon: <FaWhatsapp />, label: 'WhatsApp' },
-            ].map(({ href, icon, label }) => (
+              { href: 'https://wa.me/919414644988', icon: <FaWhatsapp />, label: 'WhatsApp', hoverColor: 'hover:bg-green-600 hover:text-white hover:border-green-600' },
+            ].map(({ href, icon, label, hoverColor }) => (
               <a
                 key={label}
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 rounded-full border border-amber-400/20 text-amber-300 hover:bg-amber-400/20 hover:text-amber-200 transition-all duration-200"
+                className={`p-2.5 rounded-full border border-amber-400/20 text-amber-300 transition-all duration-300 hover:scale-105 ${hoverColor}`}
                 aria-label={label}
               >
                 {icon}

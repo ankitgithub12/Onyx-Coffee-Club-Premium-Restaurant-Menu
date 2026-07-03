@@ -39,10 +39,10 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 no-print ${isScrolled
-          ? 'py-3 border-b border-amber-200/60'
+          ? 'py-3'
           : 'bg-transparent py-5'
         }`}
-      style={isScrolled ? { background: 'rgba(255, 251, 244, 0.92)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', boxShadow: '0 2px 20px rgba(146, 64, 14, 0.1)' } : {}}
+      style={isScrolled ? { background: 'rgba(255, 251, 244, 0.75)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(245, 158, 11, 0.2)', boxShadow: '0 4px 30px rgba(146, 64, 14, 0.05)' } : {}}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -78,10 +78,9 @@ const Navbar = () => {
               <button
                 key={label}
                 onClick={action}
-                className="text-sm font-semibold text-stone-700 hover:text-amber-700 transition-colors duration-200 cursor-pointer relative group"
+                className="text-sm font-semibold text-stone-700 hover:text-amber-800 transition-colors duration-200 cursor-pointer nav-link-underline"
               >
                 {label}
-                <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-amber-500 rounded-full group-hover:w-full transition-all duration-300" />
               </button>
             ))}
           </div>
@@ -102,7 +101,7 @@ const Navbar = () => {
             <div className="md:hidden flex items-center">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2.5 rounded-full hover:bg-amber-100 text-stone-700 cursor-pointer"
+                className="p-2.5 rounded-full hover:bg-amber-100/70 text-stone-700 cursor-pointer transition-colors"
               >
                 {mobileMenuOpen ? <FaTimes className="text-lg" /> : <FaBars className="text-lg" />}
               </button>
@@ -114,8 +113,8 @@ const Navbar = () => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-amber-100 px-4 pt-3 pb-6 space-y-1 flex flex-col font-inter"
-          style={{ background: 'rgba(255, 251, 244, 0.97)', backdropFilter: 'blur(12px)' }}
+        <div className="md:hidden border-b border-amber-200/50 px-4 pt-3 pb-5 space-y-1.5 flex flex-col font-inter shadow-lg"
+          style={{ background: 'rgba(255, 251, 244, 0.95)', backdropFilter: 'blur(20px)' }}
         >
           {[
             { label: 'Home', action: () => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); } },
@@ -126,7 +125,7 @@ const Navbar = () => {
             <button
               key={label}
               onClick={action}
-              className="text-left py-3 px-2 border-b border-amber-100/70 text-sm font-semibold text-stone-700 hover:text-amber-700 transition-colors"
+              className="text-left py-2.5 px-4 rounded-xl text-sm font-semibold text-stone-700 hover:text-amber-800 hover:bg-amber-50/80 transition-all duration-200"
             >
               {label}
             </button>
@@ -134,9 +133,9 @@ const Navbar = () => {
 
           <button
             onClick={() => { setMobileMenuOpen(false); triggerSearchFocus(); }}
-            className="flex items-center gap-2 text-left py-3 px-2 text-sm font-semibold text-amber-700"
+            className="flex items-center gap-2.5 text-left py-2.5 px-4 rounded-xl text-sm font-semibold text-amber-800 hover:bg-amber-100/40 transition-all duration-200"
           >
-            <FaSearch />
+            <FaSearch className="text-sm" />
             <span>Search Menu</span>
           </button>
         </div>
