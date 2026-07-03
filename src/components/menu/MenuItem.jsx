@@ -10,33 +10,33 @@ const MenuItem = ({ item }) => {
   const { addToShortlist, shortlist } = useContext(MenuContext);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Check if item is already in shortlist
   const isInShortlist = shortlist.some(i => i.id === item.id);
   const currentQty = shortlist.find(i => i.id === item.id)?.quantity || 0;
 
   return (
-    <div 
-      className="group flex flex-col border-b border-zinc-100 dark:border-zinc-800/40 py-3 transition-colors duration-250 hover:bg-primary/5 dark:hover:bg-zinc-850 px-2 rounded-xl"
+    <div
+      className="group flex flex-col border-b border-amber-50 py-3 transition-all duration-200 hover:bg-amber-50/60 px-2 rounded-xl"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      
-      {/* 3-Column Layout Matching Menu */}
+
+      {/* 3-Column Layout */}
       <div className="grid grid-cols-12 gap-2 items-center">
-        
+
         {/* Col 1: Item Name + Badges */}
-        <div className="col-span-6 flex items-center space-x-2">
-          {item.veg && <Badge type="veg" className="flex-shrink-0" />}
-          
+        <div className="col-span-6 flex items-center gap-2 min-w-0">
+          {item.veg && <span className="veg-dot flex-shrink-0" title="Vegetarian" />}
+
           <div className="flex flex-col min-w-0">
-            <span className="font-semibold text-xs sm:text-sm md:text-base text-text-dark dark:text-zinc-100 group-hover:text-primary dark:group-hover:text-border-gold transition-colors truncate font-inter">
+            <span className="font-semibold text-xs sm:text-sm text-stone-800 group-hover:text-amber-800 transition-colors truncate font-inter">
               {item.name}
             </span>
-            
-            {/* Show item.popular as a small badge */}
+
             {item.popular && (
               <div className="mt-0.5 self-start">
-                <Badge type="popular" className="text-[8px] px-1.5 py-0.2" />
+                <span className="inline-flex items-center gap-0.5 text-[9px] font-bold uppercase tracking-wider text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded-full">
+                  ⭐ Popular
+                </span>
               </div>
             )}
           </div>
@@ -47,25 +47,25 @@ const MenuItem = ({ item }) => {
           <MenuPrice price={item.price} />
         </div>
 
-        {/* Col 3: Main Ingredient */}
-        <div className="col-span-4 text-right flex items-center justify-end space-x-2 pl-2">
+        {/* Col 3: Main Ingredient + Quick Add */}
+        <div className="col-span-4 text-right flex items-center justify-end gap-2 pl-1">
           <IngredientList ingredients={item.ingredients} />
-          
-          {/* Quick Add Button (visible on hover, or always on touch screens) */}
+
+          {/* Quick Add Button */}
           <button
             onClick={(e) => {
               e.stopPropagation();
               addToShortlist(item);
             }}
             className={`no-print flex-shrink-0 p-1.5 rounded-lg border transition-all duration-300 cursor-pointer ${
-              isInShortlist 
-                ? 'bg-accent/10 border-accent/40 text-accent dark:bg-accent/25 dark:text-bg-cream' 
-                : 'bg-white dark:bg-zinc-800 border-border-gold/30 text-primary hover:bg-primary hover:text-white hover:scale-105'
+              isInShortlist
+                ? 'bg-amber-100 border-amber-300 text-amber-700'
+                : 'bg-white border-amber-200 text-amber-700 hover:bg-amber-600 hover:text-white hover:border-amber-600 hover:scale-105'
             }`}
-            title={isInShortlist ? `Added ${currentQty} to Tray` : "Add to Tray"}
+            title={isInShortlist ? `Added ${currentQty} to Tray` : 'Add to Tray'}
           >
             {isInShortlist ? (
-              <span className="flex items-center text-[10px] font-bold space-x-0.5">
+              <span className="flex items-center text-[10px] font-bold gap-0.5">
                 <FaCheck className="text-[9px]" />
                 <span className="hidden sm:inline">{currentQty}</span>
               </span>
@@ -77,7 +77,7 @@ const MenuItem = ({ item }) => {
 
       </div>
 
-      {/* Expandable description on hover / active */}
+      {/* Expandable description on hover */}
       <AnimatePresence>
         {isHovered && item.description && (
           <motion.div
@@ -85,9 +85,9 @@ const MenuItem = ({ item }) => {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden mt-1.5 text-left pl-6"
+            className="overflow-hidden mt-1.5 text-left pl-5"
           >
-            <p className="text-[11px] md:text-xs text-text-muted dark:text-zinc-400 font-inter leading-relaxed max-w-xl">
+            <p className="text-[11px] text-stone-500 font-inter leading-relaxed max-w-xl">
               {item.description}
             </p>
           </motion.div>

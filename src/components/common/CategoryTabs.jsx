@@ -21,32 +21,38 @@ const CategoryTabs = () => {
   ];
 
   return (
-    <div className="w-full flex flex-col space-y-6 no-print">
-      
+    <div className="w-full flex flex-col space-y-5 no-print">
+
       {/* Category Tabs Scroll */}
-      <div className="w-full overflow-x-auto pb-2 scrollbar-none flex items-center justify-start md:justify-center">
-        <div className="flex space-x-3 px-4 sm:px-6">
+      <div className="w-full overflow-x-auto pb-2 scrollbar-none">
+        <div className="flex gap-2.5 px-2 sm:px-0 min-w-max sm:min-w-0 sm:flex-wrap sm:justify-center">
           {tabs.map((tab) => {
             const isActive = selectedCategory === tab.id;
             return (
               <button
                 key={tab.id}
                 onClick={() => setSelectedCategory(tab.id)}
-                className={`relative flex items-center space-x-2 px-4 py-2.5 rounded-2xl text-xs md:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer ${
-                  isActive
-                    ? 'text-bg-cream shadow-md z-10'
-                    : 'bg-white/60 dark:bg-zinc-900/60 text-text-dark dark:text-zinc-300 hover:bg-zinc-200/50 dark:hover:bg-zinc-800'
-                }`}
+                className="relative flex items-center gap-2 px-4 py-2.5 rounded-full text-xs md:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer border"
+                style={isActive ? {
+                  background: 'linear-gradient(135deg, #92400e 0%, #d97706 100%)',
+                  color: '#fff',
+                  borderColor: 'transparent',
+                  boxShadow: '0 4px 14px rgba(146, 64, 14, 0.35)',
+                } : {
+                  background: '#fff',
+                  color: '#57534e',
+                  borderColor: '#fde68a',
+                }}
               >
                 {/* Active Indicator Layer */}
                 {isActive && (
                   <motion.div
                     layoutId="activeTabIndicator"
-                    className="absolute inset-0 bg-primary rounded-2xl -z-10"
+                    className="absolute inset-0 rounded-full -z-10"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
-                <span className={isActive ? 'text-bg-cream' : 'text-accent'}>
+                <span className={isActive ? 'text-amber-200' : 'text-amber-600'}>
                   {getCategoryIcon(tab.iconName || 'FaBorderAll', 'text-sm')}
                 </span>
                 <span>{tab.name}</span>
@@ -57,32 +63,32 @@ const CategoryTabs = () => {
       </div>
 
       {/* Filter Toggles Row */}
-      <div className="flex flex-wrap items-center justify-center gap-4 px-4 font-inter text-xs">
-        
+      <div className="flex flex-wrap items-center justify-center gap-3 px-2 font-inter text-xs">
+
         {/* Veg Only Toggle */}
         <button
           onClick={() => setVegOnly(!vegOnly)}
-          className={`flex items-center space-x-2 px-4 py-2 rounded-xl border font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-full border font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
             vegOnly
-              ? 'bg-green-600/10 border-green-600/30 text-green-600 dark:text-green-400 dark:bg-green-950/20'
-              : 'bg-white/40 dark:bg-zinc-900/40 border-border-gold/20 text-text-dark dark:text-zinc-300 hover:border-border-gold/45'
+              ? 'bg-green-50 border-green-400 text-green-700 shadow-sm'
+              : 'bg-white border-amber-200 text-stone-600 hover:border-green-300'
           }`}
         >
-          <FaLeaf className={vegOnly ? 'text-green-600 dark:text-green-400' : 'text-zinc-400'} />
+          <FaLeaf className={vegOnly ? 'text-green-600' : 'text-stone-400'} />
           <span>Veg Only</span>
         </button>
 
         {/* Popular Only Toggle */}
         <button
           onClick={() => setPopularOnly(!popularOnly)}
-          className={`flex items-center space-x-2 px-4 py-2 rounded-xl border font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-full border font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
             popularOnly
-              ? 'bg-amber-500/10 border-amber-500/30 text-amber-600 dark:text-amber-400 dark:bg-amber-950/20'
-              : 'bg-white/40 dark:bg-zinc-900/40 border-border-gold/20 text-text-dark dark:text-zinc-300 hover:border-border-gold/45'
+              ? 'bg-amber-50 border-amber-400 text-amber-700 shadow-sm'
+              : 'bg-white border-amber-200 text-stone-600 hover:border-amber-300'
           }`}
         >
-          <FaFire className={popularOnly ? 'text-amber-500' : 'text-zinc-400'} />
-          <span>Popular Only</span>
+          <FaFire className={popularOnly ? 'text-amber-500' : 'text-stone-400'} />
+          <span>Popular</span>
         </button>
 
       </div>

@@ -7,22 +7,26 @@ import MenuGrid from '../components/menu/MenuGrid';
 
 const Menu = () => {
   return (
-    <section id="menu-section" className="py-16 md:py-24 cream-gradient dark:bg-zinc-950/20">
+    <section
+      id="menu-section"
+      className="py-16 md:py-24"
+      style={{ background: 'linear-gradient(180deg, #fffbf4 0%, #fff8ed 100%)' }}
+    >
       <Container className="space-y-10">
-        
+
         {/* Header Title and Search Bar */}
-        <div className="flex flex-col items-center space-y-4">
-          <SectionTitle 
-            title="The Serenity Menu" 
-            subtitle="Freshly crafted, 100% vegetarian coffee, drinks, and gourmet snacks" 
+        <div className="flex flex-col items-center space-y-6">
+          <SectionTitle
+            title="The Serenity Menu"
+            subtitle="Freshly crafted, 100% vegetarian coffee, drinks, and gourmet snacks"
           />
           <SearchBar />
         </div>
-        
-        {/* Filters and Horizontal Category tabs */}
+
+        {/* Category Tabs + Filters */}
         <CategoryTabs />
-        
-        {/* Rendered cards grid */}
+
+        {/* Menu Grid */}
         <div className="pt-4">
           <MenuGrid />
         </div>

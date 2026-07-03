@@ -10,96 +10,100 @@ import { pasta } from './pasta';
 import { burgers } from './burgers';
 import { shots } from './shots';
 
+// Helper: enrich items with categoryId and categoryName
+const enrich = (items, categoryId, categoryName) =>
+  items.map(item => ({ ...item, categoryId, categoryName }));
+
 export const categories = [
   {
     id: "hot-coffee",
     name: "Hot Coffee",
     iconName: "FaCoffee",
-    items: hotCoffee,
+    items: enrich(hotCoffee, "hot-coffee", "Hot Coffee"),
     column: "left"
   },
   {
     id: "cold-coffee",
     name: "Cold Coffee",
     iconName: "MdOutlineLocalCafe",
-    items: coldCoffee,
+    items: enrich(coldCoffee, "cold-coffee", "Cold Coffee"),
     column: "left"
   },
   {
     id: "milkshakes",
     name: "Milkshakes",
     iconName: "GiMilkCarton",
-    items: milkshakes,
+    items: enrich(milkshakes, "milkshakes", "Milkshakes"),
     column: "left"
   },
   {
     id: "french-fries",
     name: "French Fries",
     iconName: "GiFrenchFries",
-    items: fries,
+    items: enrich(fries, "french-fries", "French Fries"),
     column: "left"
   },
   {
     id: "sandwiches",
     name: "Sandwiches",
     iconName: "GiSandwich",
-    items: sandwiches,
+    items: enrich(sandwiches, "sandwiches", "Sandwiches"),
     column: "left"
   },
   {
     id: "signature-drinks",
     name: "Signature Drinks",
-    iconName: "BiDrink", // Using BiDrink or FaCocktail
-    items: signatureDrinks,
+    iconName: "BiDrink",
+    items: enrich(signatureDrinks, "signature-drinks", "Signature Drinks"),
     column: "center"
   },
   {
     id: "soft-drinks",
     name: "Soft Drinks",
     iconName: "GiSodaCan",
-    items: softDrinks,
+    items: enrich(softDrinks, "soft-drinks", "Soft Drinks"),
     column: "center"
   },
   {
     id: "pizza",
     name: "Veg Pizza",
     iconName: "FaPizzaSlice",
-    items: pizza,
+    items: enrich(pizza, "pizza", "Veg Pizza"),
     column: "right"
   },
   {
     id: "pasta",
     name: "Pasta",
     iconName: "GiNoodles",
-    items: pasta,
+    items: enrich(pasta, "pasta", "Pasta"),
     column: "right"
   },
   {
     id: "burgers",
     name: "Burgers",
     iconName: "FaHamburger",
-    items: burgers,
+    items: enrich(burgers, "burgers", "Burgers"),
     column: "right"
   },
   {
     id: "shots",
     name: "Shots",
     iconName: "GiMartini",
-    items: shots,
+    items: enrich(shots, "shots", "Shots"),
     column: "right"
   }
 ];
 
 export const allItems = [
-  ...hotCoffee.map(item => ({ ...item, categoryId: "hot-coffee", categoryName: "Hot Coffee" })),
-  ...coldCoffee.map(item => ({ ...item, categoryId: "cold-coffee", categoryName: "Cold Coffee" })),
-  ...milkshakes.map(item => ({ ...item, categoryId: "milkshakes", categoryName: "Milkshakes" })),
-  ...fries.map(item => ({ ...item, categoryId: "french-fries", categoryName: "French Fries" })),
-  ...sandwiches.map(item => ({ ...item, categoryId: "sandwiches", categoryName: "Sandwiches" })),
-  ...signatureDrinks.map(item => ({ ...item, categoryId: "signature-drinks", categoryName: "Signature Drinks" })),
-  ...softDrinks.map(item => ({ ...item, categoryId: "soft-drinks", categoryName: "Soft Drinks" })),
-  ...pizza.map(item => ({ ...item, categoryId: "pizza", categoryName: "Veg Pizza" })),
-  ...pasta.map(item => ({ ...item, categoryId: "pasta", categoryName: "Pasta" })),
-  ...burgers.map(item => ({ ...item, categoryId: "burgers", categoryName: "Burgers" })),
-  ...shots.map(item => ({ ...item, categoryId: "shots", categoryName: "Shots" }))
+  ...enrich(hotCoffee, "hot-coffee", "Hot Coffee"),
+  ...enrich(coldCoffee, "cold-coffee", "Cold Coffee"),
+  ...enrich(milkshakes, "milkshakes", "Milkshakes"),
+  ...enrich(fries, "french-fries", "French Fries"),
+  ...enrich(sandwiches, "sandwiches", "Sandwiches"),
+  ...enrich(signatureDrinks, "signature-drinks", "Signature Drinks"),
+  ...enrich(softDrinks, "soft-drinks", "Soft Drinks"),
+  ...enrich(pizza, "pizza", "Veg Pizza"),
+  ...enrich(pasta, "pasta", "Pasta"),
+  ...enrich(burgers, "burgers", "Burgers"),
+  ...enrich(shots, "shots", "Shots"),
 ];

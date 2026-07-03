@@ -1,85 +1,107 @@
 import React, { useContext } from 'react';
 import { MenuContext } from '../../context/MenuContext';
 import Card from '../common/Card';
-import Badge from '../common/Badge';
 import MenuPrice from './MenuPrice';
 import IngredientList from './IngredientList';
 import Button from '../common/Button';
-import { FaPlus, FaCheck, FaCoffee, FaCocktail, FaPizzaSlice, FaHamburger } from 'react-icons/fa';
+import { FaPlus, FaCheck, FaCoffee, FaCocktail, FaPizzaSlice, FaHamburger, FaLeaf } from 'react-icons/fa';
+import { GiFrenchFries, GiNoodles, GiMilkCarton } from 'react-icons/gi';
 
-// Helper to render decorative illustrations based on category ID
-const getDecorativeIcon = (categoryId, className = '') => {
-  const baseClass = `text-5xl opacity-80 ${className}`;
-  if (categoryId.includes('coffee')) {
-    return <FaCoffee className={`${baseClass} text-primary`} />;
-  }
-  if (categoryId.includes('drink') || categoryId.includes('shot')) {
-    return <FaCocktail className={`${baseClass} text-accent`} />;
-  }
-  if (categoryId.includes('pizza')) {
-    return <FaPizzaSlice className={`${baseClass} text-amber-500`} />;
-  }
-  if (categoryId.includes('burger') || categoryId.includes('sandwich')) {
-    return <FaHamburger className={`${baseClass} text-orange-500`} />;
-  }
-  return <FaCoffee className={`${baseClass} text-primary`} />;
+// Category decorative color map
+const categoryColors = {
+  coffee: { bg: '#fef3c7', text: '#92400e', icon: <FaCoffee /> },
+  drink: { bg: '#ecfdf5', text: '#065f46', icon: <FaCocktail /> },
+  shot: { bg: '#fdf4ff', text: '#7e22ce', icon: <FaCocktail /> },
+  pizza: { bg: '#fff7ed', text: '#c2410c', icon: <FaPizzaSlice /> },
+  burger: { bg: '#fef9c3', text: '#854d0e', icon: <FaHamburger /> },
+  sandwich: { bg: '#fef9c3', text: '#854d0e', icon: <FaHamburger /> },
+  milkshake: { bg: '#eff6ff', text: '#1d4ed8', icon: <GiMilkCarton /> },
+  fries: { bg: '#fefce8', text: '#a16207', icon: <GiFrenchFries /> },
+  pasta: { bg: '#fff1f2', text: '#9f1239', icon: <GiNoodles /> },
+  default: { bg: '#fef3c7', text: '#92400e', icon: <FaCoffee /> },
+};
+
+const getCategoryStyle = (categoryId = '') => {
+  const key = Object.keys(categoryColors).find(k => categoryId.includes(k)) || 'default';
+  return categoryColors[key];
 };
 
 const MenuCard = ({ item }) => {
   const { addToShortlist, shortlist } = useContext(MenuContext);
   const isInShortlist = shortlist.some(i => i.id === item.id);
   const currentQty = shortlist.find(i => i.id === item.id)?.quantity || 0;
+  const style = getCategoryStyle(item.categoryId || '');
 
   return (
-    <Card 
-      className="flex flex-col justify-between h-full bg-gradient-to-br from-white to-bg-cream/40 dark:from-zinc-900 dark:to-zinc-800/80 border border-border-gold/20 shadow-md relative overflow-hidden" 
-      hoverEffect={true}
+    <div
+      className="flex flex-col justify-between h-full rounded-2xl border border-amber-100 p-5 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 group"
+      style={{ background: '#fff', boxShadow: '0 4px 20px rgba(146, 64, 14, 0.09)' }}
     >
-      {/* Decorative top background circle */}
-      <div className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-primary/5 dark:bg-zinc-850/40 z-0"></div>
+      {/* Decorative corner blob */}
+      <div
+        className="absolute -top-10 -right-10 w-28 h-28 rounded-full opacity-60 transition-all duration-300 group-hover:opacity-80 group-hover:scale-110"
+        style={{ background: style.bg }}
+      />
 
       <div className="relative z-10 space-y-4">
-        
+
         {/* Badges & Icon */}
         <div className="flex justify-between items-start">
           <div className="flex flex-wrap gap-1.5 max-w-[70%]">
-            {item.veg && <Badge type="veg" />}
-            {item.popular && <Badge type="popular" />}
-            <Badge type="special" />
+            {item.veg && (
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full">
+                <FaLeaf className="text-[8px]" /> Veg
+              </span>
+            )}
+            {item.popular && (
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded-full">
+                ⭐ Popular
+              </span>
+            )}
           </div>
-          
-          <div className="p-3 bg-primary/5 dark:bg-zinc-800/50 rounded-2xl">
-            {getDecorativeIcon(item.categoryId || 'coffee')}
+
+          <div
+            className="p-3 rounded-2xl text-2xl"
+            style={{ background: style.bg, color: style.text }}
+          >
+            {style.icon}
           </div>
         </div>
 
         {/* Text Details */}
         <div className="space-y-1.5">
-          <h4 className="font-playfair text-lg md:text-xl font-bold text-text-dark dark:text-zinc-100 uppercase tracking-wide truncate">
+          <h4 className="font-playfair text-lg md:text-xl font-bold uppercase tracking-wide truncate" style={{ color: '#1c1917' }}>
             {item.name}
           </h4>
-          <p className="text-xs text-text-muted dark:text-zinc-400 font-inter line-clamp-2 min-h-[32px]">
-            {item.description || "Freshly prepared to order using the finest selected ingredients for absolute serenity."}
+          <p className="text-xs text-stone-500 font-inter line-clamp-2 min-h-[32px]">
+            {item.description || 'Freshly prepared to order using the finest selected ingredients for absolute serenity.'}
           </p>
         </div>
 
         {/* Ingredients */}
-        <div className="pt-2 border-t border-border-gold/15 dark:border-zinc-800">
-          <span className="text-[10px] font-bold uppercase text-accent tracking-wider block mb-0.5">Ingredients</span>
+        <div className="pt-2 border-t border-amber-100">
+          <span className="text-[10px] font-bold uppercase text-amber-700/80 tracking-wider block mb-0.5">Ingredients</span>
           <IngredientList ingredients={item.ingredients} className="text-xs" />
         </div>
 
       </div>
 
-      {/* Pricing & tray actions */}
-      <div className="relative z-10 pt-4 flex items-center justify-between border-t border-border-gold/15 dark:border-zinc-850 mt-4">
+      {/* Pricing & Add Button */}
+      <div className="relative z-10 pt-4 flex items-center justify-between border-t border-amber-100 mt-4">
         <MenuPrice price={item.price} className="text-lg md:text-xl" />
 
-        <Button
-          variant={isInShortlist ? 'accent' : 'primary'}
-          size="sm"
+        <button
           onClick={() => addToShortlist(item)}
-          className="flex items-center space-x-1.5 px-4 py-2 cursor-pointer shadow-sm"
+          className="flex items-center gap-1.5 px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wide transition-all duration-300 hover:scale-105 cursor-pointer shadow-sm"
+          style={isInShortlist ? {
+            background: '#fef3c7',
+            color: '#92400e',
+            border: '1.5px solid #fde68a',
+          } : {
+            background: 'linear-gradient(135deg, #92400e 0%, #d97706 100%)',
+            color: '#fff',
+            border: '1.5px solid transparent',
+          }}
         >
           {isInShortlist ? (
             <>
@@ -92,10 +114,10 @@ const MenuCard = ({ item }) => {
               <span>Add to Tray</span>
             </>
           )}
-        </Button>
+        </button>
       </div>
 
-    </Card>
+    </div>
   );
 };
 

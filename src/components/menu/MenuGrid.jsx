@@ -10,23 +10,25 @@ import SlideUp from '../animations/SlideUp';
 import { FaCoffee, FaSearch } from 'react-icons/fa';
 
 const MenuGrid = () => {
-  const { 
-    searchQuery, 
-    selectedCategory, 
-    vegOnly, 
-    popularOnly 
+  const {
+    searchQuery,
+    selectedCategory,
+    vegOnly,
+    popularOnly
   } = useContext(MenuContext);
 
-  // Filter items in each category
+  // When "all" is selected, pass 'all' to useFilter so it skips category filtering
+  // When a specific category is selected, pass that category id
   const processedCategories = categories.map((cat) => {
-    // Apply search filter to items in this category
     const searchedItems = useSearch(cat.items, searchQuery);
-    
-    // Apply checkbox/tab filters to items in this category
+
+    // For category-level filtering:
+    // - If 'all' is selected, don't restrict by category (items already belong to this cat)
+    // - If a specific category is selected, only show items from that category
     const filteredItems = useFilter(searchedItems, {
       vegOnly,
       popularOnly,
-      selectedCategory: selectedCategory === 'all' ? cat.id : selectedCategory
+      selectedCategory: selectedCategory === 'all' ? 'all' : selectedCategory
     });
 
     return {
@@ -46,15 +48,15 @@ const MenuGrid = () => {
   // If search matches nothing, show empty state
   if (totalProcessedItems === 0) {
     return (
-      <SlideUp className="text-center py-16 px-4">
-        <div className="inline-flex p-4 bg-primary/5 dark:bg-zinc-800 rounded-full mb-4 text-accent animate-bounce">
-          <FaCoffee className="text-3xl" />
+      <SlideUp className="text-center py-20 px-4">
+        <div className="inline-flex p-5 bg-amber-50 rounded-full mb-4 text-amber-600 shadow-inner">
+          <FaCoffee className="text-4xl" />
         </div>
-        <h4 className="font-playfair text-xl font-bold text-text-dark dark:text-zinc-200 uppercase tracking-wide">
-          No Menu Items Found
+        <h4 className="font-playfair text-2xl font-bold text-amber-800 uppercase tracking-wide mt-2">
+          No Items Found
         </h4>
-        <p className="font-inter text-xs text-text-muted dark:text-zinc-400 mt-2 max-w-sm mx-auto">
-          We couldn't find anything matching your filters or search criteria. Try modifying your search or toggles.
+        <p className="font-inter text-sm text-amber-700/70 mt-3 max-w-sm mx-auto">
+          We couldn't find anything matching your filters. Try clearing your search or changing the category.
         </p>
       </SlideUp>
     );
@@ -75,10 +77,10 @@ const MenuGrid = () => {
   return (
     <div className="w-full">
       {/* 3 Column Grid for Desktop / Tablet Stacking */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-        
-        {/* Left Column: Hot Coffee, Cold Coffee, Milkshakes, Fries, Sandwiches */}
-        <div className="space-y-8 flex flex-col">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+
+        {/* Left Column */}
+        <div className="space-y-6 flex flex-col">
           {leftColCats.map((cat, index) => (
             <SlideUp key={cat.id} delay={index * 0.1}>
               <MenuCategory category={cat} />
@@ -87,10 +89,9 @@ const MenuGrid = () => {
         </div>
 
         {/* Center Column: Branding Center + Signature Drinks, Soft Drinks */}
-        <div className="space-y-8 flex flex-col">
-          
-          {/* Logo Branding - visible on desktop, styled at top of menu */}
-          <div className="hidden lg:flex flex-col bg-white/40 dark:bg-zinc-900/40 rounded-2xl border border-border-gold/20 p-8 shadow-sm">
+        <div className="space-y-6 flex flex-col">
+          {/* Logo Branding - visible on desktop */}
+          <div className="hidden lg:flex flex-col rounded-2xl border border-amber-200/60 p-8 shadow-sm bg-gradient-to-br from-amber-50 to-orange-50">
             <RestaurantLogo size="md" />
           </div>
 
@@ -101,8 +102,8 @@ const MenuGrid = () => {
           ))}
         </div>
 
-        {/* Right Column: Pizza, Pasta, Burgers, Shots */}
-        <div className="space-y-8 flex flex-col">
+        {/* Right Column */}
+        <div className="space-y-6 flex flex-col">
           {rightColCats.map((cat, index) => (
             <SlideUp key={cat.id} delay={(index + 4) * 0.1}>
               <MenuCategory category={cat} />

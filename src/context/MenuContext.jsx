@@ -7,35 +7,14 @@ export const MenuProvider = ({ children }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [vegOnly, setVegOnly] = useState(false);
   const [popularOnly, setPopularOnly] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const [shortlist, setShortlist] = useState([]);
   const [isShortlistOpen, setIsShortlistOpen] = useState(false);
 
-  // Load theme from localStorage on mount
+  // Always light mode — remove dark class on mount
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      setDarkMode(true);
-      document.documentElement.classList.add('dark');
-    } else {
-      setDarkMode(false);
-      document.documentElement.classList.remove('dark');
-    }
+    document.documentElement.classList.remove('dark');
+    localStorage.removeItem('theme');
   }, []);
-
-  const toggleDarkMode = () => {
-    setDarkMode(prev => {
-      const newVal = !prev;
-      if (newVal) {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-      }
-      return newVal;
-    });
-  };
 
   const addToShortlist = (item) => {
     setShortlist(prev => {
@@ -76,8 +55,8 @@ export const MenuProvider = ({ children }) => {
       setVegOnly,
       popularOnly,
       setPopularOnly,
-      darkMode,
-      toggleDarkMode,
+      darkMode: false,
+      toggleDarkMode: () => {},
       shortlist,
       addToShortlist,
       removeFromShortlist,

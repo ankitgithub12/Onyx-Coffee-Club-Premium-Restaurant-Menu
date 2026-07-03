@@ -10,11 +10,11 @@ function App() {
   return (
     <MenuProvider>
       <Router>
-        <div className="min-h-screen flex flex-col bg-bg-cream dark:bg-zinc-950 text-text-dark dark:text-zinc-100 transition-colors duration-300">
-          
+        <div className="min-h-screen flex flex-col" style={{ background: '#fffbf4', color: '#1c1917' }}>
+
           {/* Sticky Navigation Bar */}
           <Navbar />
-          
+
           {/* Main Content Router */}
           <main className="flex-grow">
             <AppRoutes />
@@ -23,9 +23,9 @@ function App() {
           {/* Shortlist Tray Bill Estimator */}
           <ShortlistDrawer />
 
-          {/* Footer with branding */}
+          {/* Footer */}
           <Footer />
-          
+
         </div>
       </Router>
     </MenuProvider>
