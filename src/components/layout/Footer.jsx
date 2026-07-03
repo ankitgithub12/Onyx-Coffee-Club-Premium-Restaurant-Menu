@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebookF, FaInstagram, FaTwitter, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaCoffee, FaLeaf, FaWhatsapp } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhoneAlt, FaClock, FaCoffee, FaLeaf, FaWhatsapp } from 'react-icons/fa';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -67,7 +67,7 @@ const Footer = () => {
           {/* Contact Info */}
           <div className="flex flex-col items-center md:items-end text-center md:text-right space-y-3">
             <h4 className="font-playfair text-lg font-bold text-amber-300 tracking-wide uppercase flex items-center gap-2">
-              <FaEnvelope className="text-amber-400 text-sm" />
+              <FaPhoneAlt className="text-amber-400 text-sm" />
               <span>Get In Touch</span>
             </h4>
             <div className="text-amber-100/70 text-sm space-y-1.5">
@@ -75,7 +75,6 @@ const Footer = () => {
                 <FaPhoneAlt className="text-amber-400 text-xs" />
                 <span>+91 94146 44988</span>
               </p>
-              <p>info@onyxcoffeeclub.com</p>
             </div>
           </div>
         </div>
@@ -87,9 +86,6 @@ const Footer = () => {
           {/* Social Icons */}
           <div className="flex gap-3">
             {[
-              { href: 'https://instagram.com', icon: <FaInstagram />, label: 'Instagram' },
-              { href: 'https://facebook.com', icon: <FaFacebookF />, label: 'Facebook' },
-              { href: 'https://twitter.com', icon: <FaTwitter />, label: 'Twitter' },
               { href: 'https://wa.me/919414644988', icon: <FaWhatsapp />, label: 'WhatsApp' },
             ].map(({ href, icon, label }) => (
               <a
