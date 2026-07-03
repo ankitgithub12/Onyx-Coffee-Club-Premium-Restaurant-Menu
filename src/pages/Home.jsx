@@ -149,7 +149,7 @@ const Home = () => {
         <section id="specials-section" className="py-20 bg-gradient-to-b from-amber-50 to-white">
           <Container>
             <SectionTitle
-              title="Today's Specials"
+              title="Chef's Signature Creations"
               subtitle="Handpicked favourites — freshly prepared and bursting with flavour"
             />
 
