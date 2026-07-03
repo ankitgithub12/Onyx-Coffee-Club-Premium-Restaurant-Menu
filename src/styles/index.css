@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --font-playfair: "Playfair Display", serif;
+  --font-merriweather: "Merriweather", serif;
+  --font-inter: "Inter", sans-serif;
+
+  --color-primary: #8B4513;
+  --color-accent: #C97A40;
+  --color-border-gold: #D6B37A;
+  --color-bg-cream: #F8F4EE;
+  --color-text-dark: #2D2D2D;
+  --color-text-muted: #777777;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg-cream);
+    color: var(--color-text-dark);
+    font-family: var(--font-inter);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair);
+  }
+}
+
+/* Custom Utilities for Premium Styling */
+.text-stroke-gold {
+  -webkit-text-stroke: 1px var(--color-border-gold);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #8B4513 0%, #C97A40 50%, #D6B37A 100%);
+}
+
+.cream-gradient {
+  background: linear-gradient(180deg, #F8F4EE 0%, #FFFDFB 100%);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(214, 179, 122, 0.2);
+}
+
+.dark .glass-card {
+  background: rgba(45, 45, 45, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(214, 179, 122, 0.1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-gold);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Print Friendly Layout Styles */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  .print-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .print-card {
+    border: 1px solid #D6B37A !important;
+    box-shadow: none !important;
+    background: #FFFFFF !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .print-header {
+    border-bottom: 2px solid #8B4513 !important;
+    margin-bottom: 2rem !important;
+  }
+}
