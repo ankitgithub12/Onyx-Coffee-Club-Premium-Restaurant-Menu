@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { FaSearch, FaBars, FaTimes, FaCoffee } from 'react-icons/fa';
 import logoImg from '../../assets/Onyx logo.jpeg';
 
 const Navbar = () => {
-
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const isHomePage = location.pathname === '/';
+  const isDarkHeader = isHomePage && !isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,11 +42,20 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 no-print ${isScrolled
-          ? 'py-3'
-          : 'bg-transparent py-5'
-        }`}
-      style={isScrolled ? { background: 'rgba(255, 251, 244, 0.75)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(245, 158, 11, 0.2)', boxShadow: '0 4px 30px rgba(146, 64, 14, 0.05)' } : {}}
+      className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 no-print ${
+        isScrolled ? 'py-3' : 'py-5'
+      } ${isDarkHeader ? 'bg-transparent' : ''}`}
+      style={
+        !isDarkHeader
+          ? {
+              background: 'rgba(255, 251, 244, 0.75)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              borderBottom: '1px solid rgba(245, 158, 11, 0.2)',
+              boxShadow: '0 4px 30px rgba(146, 64, 14, 0.05)',
+            }
+          : {}
+      }
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -57,10 +70,20 @@ const Navbar = () => {
                 <img src={logoImg} alt="ONYX Logo" className="h-full w-full object-cover" />
               </div>
               <div className="flex flex-col leading-tight">
-                <span className="font-playfair font-extrabold text-xl tracking-wider text-amber-800 uppercase group-hover:text-amber-600 transition-colors">
+                <span
+                  className={`font-playfair font-extrabold text-xl tracking-wider uppercase transition-colors duration-250 ${
+                    isDarkHeader
+                      ? 'text-amber-300 group-hover:text-amber-200'
+                      : 'text-amber-800 group-hover:text-amber-600'
+                  }`}
+                >
                   ONYX
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.25em] text-amber-600/80 font-semibold">
+                <span
+                  className={`text-[10px] uppercase tracking-[0.25em] font-semibold transition-colors duration-250 ${
+                    isDarkHeader ? 'text-amber-200/80' : 'text-amber-600/80'
+                  }`}
+                >
                   Coffee Club
                 </span>
               </div>
@@ -78,7 +101,11 @@ const Navbar = () => {
               <button
                 key={label}
                 onClick={action}
-                className="text-sm font-semibold text-stone-700 hover:text-amber-800 transition-colors duration-200 cursor-pointer nav-link-underline"
+                className={`text-sm font-semibold transition-colors duration-200 cursor-pointer nav-link-underline ${
+                  isDarkHeader
+                    ? 'text-amber-100/90 hover:text-white'
+                    : 'text-stone-700 hover:text-amber-800'
+                }`}
               >
                 {label}
               </button>
@@ -91,7 +118,11 @@ const Navbar = () => {
             <div className="hidden md:flex items-center">
               <button
                 onClick={triggerSearchFocus}
-                className="p-2.5 rounded-full hover:bg-amber-100 text-stone-600 hover:text-amber-700 transition-all duration-200 cursor-pointer"
+                className={`p-2.5 rounded-full transition-all duration-200 cursor-pointer ${
+                  isDarkHeader
+                    ? 'text-amber-100 hover:text-white hover:bg-white/10'
+                    : 'text-stone-600 hover:text-amber-700 hover:bg-amber-100'
+                }`}
                 title="Search Menu"
               >
                 <FaSearch className="text-base" />
@@ -101,7 +132,11 @@ const Navbar = () => {
             <div className="md:hidden flex items-center">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2.5 rounded-full hover:bg-amber-100/70 text-stone-700 cursor-pointer transition-colors"
+                className={`p-2.5 rounded-full cursor-pointer transition-colors ${
+                  isDarkHeader
+                    ? 'text-amber-100 hover:text-white hover:bg-white/10'
+                    : 'text-stone-700 hover:bg-amber-100/70'
+                }`}
               >
                 {mobileMenuOpen ? <FaTimes className="text-lg" /> : <FaBars className="text-lg" />}
               </button>
