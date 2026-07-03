@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebookF, FaInstagram, FaTwitter, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaCoffee, FaLeaf } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaTwitter, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaCoffee, FaLeaf, FaWhatsapp } from 'react-icons/fa';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -60,7 +60,7 @@ const Footer = () => {
             </h4>
             <p className="text-amber-100/70 text-sm max-w-xs leading-relaxed">
               Onyx Coffee Club, Ground Floor, Serenity Avenue,<br />
-              Cyber Hub, Sector 56, Gurgaon – 122011
+              Malviya Nagar, Jaipur, Rajasthan – 302017
             </p>
           </div>
 
@@ -90,6 +90,7 @@ const Footer = () => {
               { href: 'https://instagram.com', icon: <FaInstagram />, label: 'Instagram' },
               { href: 'https://facebook.com', icon: <FaFacebookF />, label: 'Facebook' },
               { href: 'https://twitter.com', icon: <FaTwitter />, label: 'Twitter' },
+              { href: 'https://wa.me/919876543210', icon: <FaWhatsapp />, label: 'WhatsApp' },
             ].map(({ href, icon, label }) => (
               <a
                 key={label}

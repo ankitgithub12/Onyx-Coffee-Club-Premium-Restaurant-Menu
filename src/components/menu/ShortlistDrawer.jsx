@@ -136,7 +136,7 @@ const ShortlistDrawer = () => {
             {/* Sticky Bill Summary Footer */}
             {shortlist.length > 0 && (
               <div className="p-6 border-t border-border-gold/25 bg-white dark:bg-zinc-950/80 rounded-t-2xl space-y-4">
-                
+
                 {/* Total Calc */}
                 <div className="space-y-1.5 font-inter">
                   <div className="flex justify-between text-xs text-text-muted dark:text-zinc-400">
@@ -157,7 +157,7 @@ const ShortlistDrawer = () => {
 
                 {/* CTA buttons */}
                 <div className="grid grid-cols-2 gap-3 pt-2">
-                  
+
                   {/* Clear Tray */}
                   <button
                     onClick={clearShortlist}
@@ -176,7 +176,7 @@ const ShortlistDrawer = () => {
                   </button>
 
                 </div>
-                
+
                 <p className="text-[9px] text-center text-zinc-400 dark:text-zinc-500 leading-normal">
                   Show this list to your server when ordering at the table.
                 </p>
@@ -184,7 +184,7 @@ const ShortlistDrawer = () => {
               </div>
             )}
           </motion.div>
-          
+
           {/* Print Slip Layout (Hidden on screen, shown when printing) */}
           <div className="hidden print:block absolute inset-0 bg-white text-black p-8 font-serif print-container">
             <div className="text-center border-b-2 border-black pb-4 mb-6">
@@ -200,7 +200,7 @@ const ShortlistDrawer = () => {
                 <div className="col-span-2 text-right">Qty</div>
                 <div className="col-span-2 text-right">Price</div>
               </div>
-              
+
               {shortlist.map((item) => (
                 <div key={item.id} className="grid grid-cols-12 text-sm">
                   <div className="col-span-8 font-bold">{item.name}</div>
