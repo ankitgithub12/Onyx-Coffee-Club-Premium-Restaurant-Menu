@@ -4,7 +4,6 @@ import { MenuProvider } from './context/MenuContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import AppRoutes from './routes';
-import ShortlistDrawer from './components/menu/ShortlistDrawer';
 
 function App() {
   return (
@@ -19,9 +18,6 @@ function App() {
           <main className="flex-grow">
             <AppRoutes />
           </main>
-
-          {/* Shortlist Tray Bill Estimator */}
-          <ShortlistDrawer />
 
           {/* Footer */}
           <Footer />

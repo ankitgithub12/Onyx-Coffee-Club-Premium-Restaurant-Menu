@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
-import { MenuContext } from '../../context/MenuContext';
+import React from 'react';
 import Card from '../common/Card';
 import MenuPrice from './MenuPrice';
 import IngredientList from './IngredientList';
-import Button from '../common/Button';
-import { FaPlus, FaCheck, FaCoffee, FaCocktail, FaPizzaSlice, FaHamburger, FaLeaf } from 'react-icons/fa';
+import { FaCoffee, FaCocktail, FaPizzaSlice, FaHamburger, FaLeaf } from 'react-icons/fa';
 import { GiFrenchFries, GiNoodles, GiMilkCarton } from 'react-icons/gi';
 
 // Category decorative color map
@@ -27,9 +25,6 @@ const getCategoryStyle = (categoryId = '') => {
 };
 
 const MenuCard = ({ item }) => {
-  const { addToShortlist, shortlist } = useContext(MenuContext);
-  const isInShortlist = shortlist.some(i => i.id === item.id);
-  const currentQty = shortlist.find(i => i.id === item.id)?.quantity || 0;
   const style = getCategoryStyle(item.categoryId || '');
 
   return (
@@ -86,35 +81,9 @@ const MenuCard = ({ item }) => {
 
       </div>
 
-      {/* Pricing & Add Button */}
-      <div className="relative z-10 pt-4 flex items-center justify-between border-t border-amber-100 mt-4">
+      {/* Pricing */}
+      <div className="relative z-10 pt-4 flex items-center justify-start border-t border-amber-100 mt-4">
         <MenuPrice price={item.price} className="text-lg md:text-xl" />
-
-        <button
-          onClick={() => addToShortlist(item)}
-          className="flex items-center gap-1.5 px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wide transition-all duration-300 hover:scale-105 cursor-pointer shadow-sm"
-          style={isInShortlist ? {
-            background: '#fef3c7',
-            color: '#92400e',
-            border: '1.5px solid #fde68a',
-          } : {
-            background: 'linear-gradient(135deg, #92400e 0%, #d97706 100%)',
-            color: '#fff',
-            border: '1.5px solid transparent',
-          }}
-        >
-          {isInShortlist ? (
-            <>
-              <FaCheck className="text-xs" />
-              <span>Added ({currentQty})</span>
-            </>
-          ) : (
-            <>
-              <FaPlus className="text-xs" />
-              <span>Add to Tray</span>
-            </>
-          )}
-        </button>
       </div>
 
     </div>

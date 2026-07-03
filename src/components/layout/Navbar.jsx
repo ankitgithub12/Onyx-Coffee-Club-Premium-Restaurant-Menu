@@ -1,13 +1,8 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { MenuContext } from '../../context/MenuContext';
-import { FaSearch, FaClipboardList, FaBars, FaTimes, FaCoffee } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { FaSearch, FaBars, FaTimes, FaCoffee } from 'react-icons/fa';
 import logoImg from '../../assets/Onyx logo.jpeg';
 
 const Navbar = () => {
-  const {
-    totalItems,
-    setIsShortlistOpen,
-  } = useContext(MenuContext);
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -100,37 +95,10 @@ const Navbar = () => {
             >
               <FaSearch className="text-base" />
             </button>
-
-            {/* Order Tray */}
-            <button
-              onClick={() => setIsShortlistOpen(true)}
-              className="relative flex items-center gap-2 px-4 py-2.5 rounded-full bg-amber-600 hover:bg-amber-700 text-white font-semibold text-sm transition-all duration-300 hover:scale-105 shadow-md cursor-pointer"
-              title="Order Tray"
-            >
-              <FaClipboardList className="text-sm" />
-              <span>Order Tray</span>
-              {totalItems > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[9px] font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-sm animate-pulse">
-                  {totalItems}
-                </span>
-              )}
-            </button>
           </div>
 
           {/* Mobile Toolbar */}
           <div className="md:hidden flex items-center gap-2">
-            <button
-              onClick={() => setIsShortlistOpen(true)}
-              className="relative p-2.5 rounded-full bg-amber-600 text-white cursor-pointer"
-            >
-              <FaClipboardList className="text-sm" />
-              {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[8px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
-                  {totalItems}
-                </span>
-              )}
-            </button>
-
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2.5 rounded-full hover:bg-amber-100 text-stone-700 cursor-pointer"

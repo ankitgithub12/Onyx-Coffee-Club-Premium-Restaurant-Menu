@@ -1,17 +1,11 @@
-import React, { useContext, useState } from 'react';
-import { MenuContext } from '../../context/MenuContext';
+import React, { useState } from 'react';
 import Badge from '../common/Badge';
 import MenuPrice from './MenuPrice';
 import IngredientList from './IngredientList';
-import { FaPlus, FaCheck } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const MenuItem = ({ item }) => {
-  const { addToShortlist, shortlist } = useContext(MenuContext);
   const [isHovered, setIsHovered] = useState(false);
-
-  const isInShortlist = shortlist.some(i => i.id === item.id);
-  const currentQty = shortlist.find(i => i.id === item.id)?.quantity || 0;
 
   return (
     <div
@@ -47,32 +41,9 @@ const MenuItem = ({ item }) => {
           <MenuPrice price={item.price} />
         </div>
 
-        {/* Col 3: Main Ingredient + Quick Add */}
+        {/* Col 3: Main Ingredient */}
         <div className="col-span-4 text-right flex items-center justify-end gap-2 pl-1">
           <IngredientList ingredients={item.ingredients} />
-
-          {/* Quick Add Button */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              addToShortlist(item);
-            }}
-            className={`no-print flex-shrink-0 p-1.5 rounded-lg border transition-all duration-300 cursor-pointer ${
-              isInShortlist
-                ? 'bg-amber-100 border-amber-300 text-amber-700'
-                : 'bg-white border-amber-200 text-amber-700 hover:bg-amber-600 hover:text-white hover:border-amber-600 hover:scale-105'
-            }`}
-            title={isInShortlist ? `Added ${currentQty} to Tray` : 'Add to Tray'}
-          >
-            {isInShortlist ? (
-              <span className="flex items-center text-[10px] font-bold gap-0.5">
-                <FaCheck className="text-[9px]" />
-                <span className="hidden sm:inline">{currentQty}</span>
-              </span>
-            ) : (
-              <FaPlus className="text-[10px]" />
-            )}
-          </button>
         </div>
 
       </div>
