@@ -232,7 +232,9 @@ const Home = () => {
 
               <div className="flex items-center gap-3 pt-2">
                 <FaMapMarkerAlt className="text-amber-600 flex-shrink-0" />
-                <span className="text-sm text-stone-500 font-inter">Serenity Avenue, Cyber Hub, Gurgaon — 122011</span>
+                <span className="text-sm text-stone-500 font-inter">
+                  AC/209 Gyan Vihar Marg, Near Kanha Central Spine, Jagatpura, Jaipur, Rajasthan — 302017
+                </span>
               </div>
 
               <div className="pt-2">

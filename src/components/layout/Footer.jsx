@@ -59,8 +59,8 @@ const Footer = () => {
               <span>Our Location</span>
             </h4>
             <p className="text-amber-100/70 text-sm max-w-xs leading-relaxed">
-              Onyx Coffee Club, Ground Floor, Serenity Avenue,<br />
-              Malviya Nagar, Jaipur, Rajasthan – 302017
+              AC/209 Gyan Vihar Marg, Near Kanha Central Spine,<br />
+              Jagatpura, Jaipur, Rajasthan – 302017
             </p>
           </div>
 
@@ -73,7 +73,7 @@ const Footer = () => {
             <div className="text-amber-100/70 text-sm space-y-1.5">
               <p className="flex items-center justify-center md:justify-end gap-2">
                 <FaPhoneAlt className="text-amber-400 text-xs" />
-                <span>+91 98765 43210</span>
+                <span>+91 94146 44988</span>
               </p>
               <p>info@onyxcoffeeclub.com</p>
             </div>
@@ -90,7 +90,7 @@ const Footer = () => {
               { href: 'https://instagram.com', icon: <FaInstagram />, label: 'Instagram' },
               { href: 'https://facebook.com', icon: <FaFacebookF />, label: 'Facebook' },
               { href: 'https://twitter.com', icon: <FaTwitter />, label: 'Twitter' },
-              { href: 'https://wa.me/919876543210', icon: <FaWhatsapp />, label: 'WhatsApp' },
+              { href: 'https://wa.me/919414644988', icon: <FaWhatsapp />, label: 'WhatsApp' },
             ].map(({ href, icon, label }) => (
               <a
                 key={label}
