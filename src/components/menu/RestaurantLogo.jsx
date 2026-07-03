@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCoffee } from 'react-icons/fa';
+import logoImg from '../../assets/Onyx logo.jpeg';
 
 const RestaurantLogo = ({ size = 'md', className = '' }) => {
   // Size variations
@@ -74,10 +74,9 @@ const RestaurantLogo = ({ size = 'md', className = '' }) => {
             </text>
           </svg>
 
-          {/* Coffee Cup in stamp center */}
-          <div className="absolute flex flex-col items-center justify-center p-3 rounded-full bg-bg-cream/40 dark:bg-zinc-800/40 border border-primary/20 dark:border-border-gold/20 h-[70%] w-[70%]">
-            <FaCoffee className={`${selectedSize.cupIcon} text-primary dark:text-border-gold`} />
-            <span className="text-[7.5px] font-bold text-accent uppercase tracking-wider mt-1">Est. 2026</span>
+          {/* Custom logo in stamp center */}
+          <div className="absolute flex flex-col items-center justify-center p-0.5 rounded-full overflow-hidden h-[70%] w-[70%] bg-white dark:bg-zinc-800 border border-primary/20 dark:border-border-gold/20 shadow-inner">
+            <img src={logoImg} alt="ONYX Logo" className="h-full w-full rounded-full object-cover" />
           </div>
 
         </div>
@@ -86,5 +85,6 @@ const RestaurantLogo = ({ size = 'md', className = '' }) => {
     </div>
   );
 };
+
 
 export default RestaurantLogo;

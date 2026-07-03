@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { MenuContext } from '../../context/MenuContext';
-import { FaSearch, FaSun, FaMoon, FaClipboardList, FaCoffee, FaBars, FaTimes } from 'react-icons/fa';
+import { FaSearch, FaSun, FaMoon, FaClipboardList, FaBars, FaTimes } from 'react-icons/fa';
+import logoImg from '../../assets/Onyx logo.jpeg';
 
 const Navbar = () => {
   const { 
@@ -68,8 +69,8 @@ const Navbar = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
             className="flex items-center space-x-2 cursor-pointer group"
           >
-            <div className="p-2 bg-primary rounded-xl text-bg-cream group-hover:bg-accent transition-colors">
-              <FaCoffee className="text-xl" />
+            <div className="h-10 w-10 bg-white rounded-xl overflow-hidden border border-border-gold/30 flex items-center justify-center shadow-sm group-hover:border-accent group-hover:scale-105 transition-all duration-300">
+              <img src={logoImg} alt="ONYX Logo" className="h-full w-full object-cover" />
             </div>
             <div className="flex flex-col">
               <span className="font-playfair font-extrabold text-lg md:text-xl tracking-wider text-primary dark:text-border-gold uppercase">
