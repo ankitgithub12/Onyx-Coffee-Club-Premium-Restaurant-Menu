@@ -75,9 +75,31 @@ const MenuGrid = () => {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
+      {/* Decorative Premium Floating Images (Visible on desktop/large screens) */}
+      <div className="hidden xl:block pointer-events-none select-none">
+        <img
+          src="/images/coffee_latte_art.png"
+          alt="Premium Latte Art"
+          className="menu-deco-image w-52 h-52 rounded-full absolute"
+          style={{ top: '5%', left: '-14rem', transform: 'rotate(-10deg)' }}
+        />
+        <img
+          src="/images/iced_frappe_glass.png"
+          alt="Premium Iced Frappé"
+          className="menu-deco-image w-56 h-56 rounded-full absolute"
+          style={{ top: '40%', right: '-15rem', transform: 'rotate(15deg)' }}
+        />
+        <img
+          src="/images/colorful_mocktails.png"
+          alt="Premium Mocktails"
+          className="menu-deco-image w-52 h-52 rounded-full absolute"
+          style={{ bottom: '15%', left: '-14rem', transform: 'rotate(5deg)' }}
+        />
+      </div>
+
       {/* 3 Column Grid for Desktop / Tablet Stacking */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start relative z-10">
 
         {/* Left Column */}
         <div className="space-y-6 flex flex-col">
@@ -91,7 +113,8 @@ const MenuGrid = () => {
         {/* Center Column: Branding Center + Signature Drinks, Soft Drinks */}
         <div className="space-y-6 flex flex-col">
           {/* Logo Branding - visible on desktop */}
-          <div className="hidden lg:flex flex-col rounded-2xl border border-amber-200/60 p-8 shadow-sm bg-gradient-to-br from-amber-50 to-orange-50">
+          <div className="hidden lg:flex flex-col rounded-2xl p-8 glass-card border border-amber-100/30 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-orange-500/10 pointer-events-none" />
             <RestaurantLogo size="md" />
           </div>
 

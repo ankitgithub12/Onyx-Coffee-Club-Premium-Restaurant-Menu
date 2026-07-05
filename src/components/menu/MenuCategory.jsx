@@ -10,7 +10,7 @@ const MenuCategory = ({ category }) => {
   }
 
   return (
-    <Card className="print-card" hoverEffect={true}>
+    <Card className="print-card" hoverEffect={true} glass={true}>
       <MenuHeader name={category.name} iconName={category.iconName} hasSizes={category.hasSizes} />
 
       <div className="flex flex-col space-y-1">

@@ -9,10 +9,10 @@ const Menu = () => {
   return (
     <section
       id="menu-section"
-      className="py-16 md:py-24"
-      style={{ background: 'linear-gradient(180deg, #fffbf4 0%, #fff8ed 100%)' }}
+      className="py-16 md:py-24 menu-bg-texture overflow-hidden relative"
+      style={{ background: 'linear-gradient(180deg, #fffbf4 0%, #fff8ed 50%, #fef3c7 100%)' }}
     >
-      <Container className="space-y-10">
+      <Container className="space-y-10 relative z-10">
 
         {/* Header Title and Search Bar */}
         <div className="flex flex-col items-center space-y-6">

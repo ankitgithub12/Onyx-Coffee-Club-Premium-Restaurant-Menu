@@ -5,9 +5,9 @@ const MenuHeader = ({ name, iconName, hasSizes }) => {
   return (
     <div className="mb-3 select-none print-header">
 
-      {/* Title & Icon */}
-      <div className="flex items-center gap-3 mb-3">
-        <div className="p-2 rounded-xl text-amber-700" style={{ background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)' }}>
+      {/* Title & Icon — Glass header */}
+      <div className="glass-header flex items-center gap-3 mb-3">
+        <div className="p-2.5 rounded-xl text-amber-700 shadow-sm" style={{ background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 60%, #f59e0b 100%)' }}>
           {getCategoryIcon(iconName, 'text-lg md:text-xl')}
         </div>
         <h3 className="text-xl md:text-2xl font-bold font-merriweather uppercase tracking-wider"
