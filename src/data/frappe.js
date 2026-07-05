@@ -94,7 +94,7 @@ export const frappe = [
     name: "Lotus Biscoff Frappé",
     price: 180,
     ingredients: "Coffee, Lotus Biscoff, Ice",
-    popular: true,
+    popular: false,
     veg: true,
     description: "Premium Lotus Biscoff cookie butter blended with espresso and ice, finished with cookie crumbles."
   },

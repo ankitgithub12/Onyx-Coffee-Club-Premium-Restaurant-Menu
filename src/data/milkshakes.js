@@ -47,9 +47,9 @@ export const milkshakes = [
   {
     id: "sh-6",
     name: "KitKat Shake",
-    price: 170,
+    price: 160,
     ingredients: "KitKat, Milk, Ice Cream",
-    popular: false,
+    popular: true,
     veg: true,
     description: "A crunchy, chocolaty shake blended with premium KitKat bars and vanilla ice cream."
   },
@@ -58,16 +58,16 @@ export const milkshakes = [
     name: "Nutella Shake",
     price: 170,
     ingredients: "Nutella, Milk, Ice Cream",
-    popular: false,
+    popular: true,
     veg: true,
     description: "Indulgent shake blended with creamy Nutella hazelnut spread, milk, and ice cream."
   },
   {
     id: "sh-8",
-    name: "Belgium Crunchy Shake",
+    name: "Belgium Crunch Shake",
     price: 170,
     ingredients: "Belgian Chocolate, Crunch, Milk, Ice Cream",
-    popular: false,
+    popular: true,
     veg: true,
     description: "Premium Belgian chocolate shake with a satisfying crunch of caramelized chocolate pieces."
   },

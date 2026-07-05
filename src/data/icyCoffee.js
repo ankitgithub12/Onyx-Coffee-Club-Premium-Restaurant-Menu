@@ -58,7 +58,7 @@ export const icyCoffee = [
     name: "Cold Brew (Classic/Apple/Orange)",
     price: 140,
     ingredients: "Coffee Beans, Water",
-    popular: false,
+    popular: true,
     veg: true,
     description: "Slow-steeped cold brew coffee available in classic, apple, or orange flavor profiles."
   },
