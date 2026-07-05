@@ -67,13 +67,6 @@ export const categories = [
     column: "center"
   },
   {
-    id: "brain-freezers",
-    name: "Brain Freezers",
-    iconName: "FaSnowflake",
-    items: enrich(brainFreezers, "brain-freezers", "Brain Freezers"),
-    column: "center"
-  },
-  {
     id: "mocktails",
     name: "Mocktails",
     iconName: "FaCocktail",
@@ -92,6 +85,13 @@ export const categories = [
     name: "Extras",
     iconName: "FaPlusCircle",
     items: enrich(extras, "extras", "Extras"),
+    column: "right"
+  },
+  {
+    id: "brain-freezers",
+    name: "Brain Freezers",
+    iconName: "FaSnowflake",
+    items: enrich(brainFreezers, "brain-freezers", "Brain Freezers"),
     column: "right"
   }
 ];
