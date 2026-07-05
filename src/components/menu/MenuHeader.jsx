@@ -1,7 +1,7 @@
 import React from 'react';
 import { getCategoryIcon } from '../../utils/helpers';
 
-const MenuHeader = ({ name, iconName }) => {
+const MenuHeader = ({ name, iconName, hasSizes }) => {
   return (
     <div className="mb-3 select-none print-header">
 
@@ -21,8 +21,17 @@ const MenuHeader = ({ name, iconName }) => {
 
       {/* Column Titles */}
       <div className="grid grid-cols-12 gap-2 text-[10px] md:text-xs font-bold uppercase tracking-wider font-inter pb-1 text-amber-700/80">
-        <div className="col-span-6">Item</div>
-        <div className="col-span-2 text-right">Price</div>
+        <div className={hasSizes ? 'col-span-5' : 'col-span-6'}>Item</div>
+        <div className={`${hasSizes ? 'col-span-3' : 'col-span-2'} text-center`}>
+          {hasSizes ? (
+            <div className="flex justify-center items-baseline gap-1">
+              <span>Price</span>
+              <span className="text-[8px] text-amber-500/70 font-semibold tracking-wide">(Regular / Large)</span>
+            </div>
+          ) : (
+            'Price'
+          )}
+        </div>
         <div className="col-span-4 text-right">Main Ingredient</div>
       </div>
 

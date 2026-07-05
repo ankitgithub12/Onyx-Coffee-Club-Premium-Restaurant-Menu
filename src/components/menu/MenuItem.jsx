@@ -38,7 +38,7 @@ const MenuItem = ({ item }) => {
         </div>
 
         {/* Col 2: Price */}
-        <div className={`${hasDualPrice ? 'col-span-3' : 'col-span-2'} text-right`}>
+        <div className={`${hasDualPrice ? 'col-span-3' : 'col-span-2'} text-center`}>
           <MenuPrice
             price={item.price}
             priceRegular={item.priceRegular}
