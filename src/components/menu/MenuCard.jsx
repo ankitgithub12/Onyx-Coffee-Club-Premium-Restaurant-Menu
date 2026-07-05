@@ -2,20 +2,22 @@ import React from 'react';
 import Card from '../common/Card';
 import MenuPrice from './MenuPrice';
 import IngredientList from './IngredientList';
-import { FaCoffee, FaCocktail, FaPizzaSlice, FaHamburger, FaLeaf } from 'react-icons/fa';
-import { GiFrenchFries, GiNoodles, GiMilkCarton } from 'react-icons/gi';
+import { FaCoffee, FaCocktail, FaSnowflake, FaPlusCircle, FaLeaf, FaMugHot } from 'react-icons/fa';
+import { GiMilkCarton, GiTeapot, GiIceCube } from 'react-icons/gi';
+import { MdOutlineLocalCafe } from 'react-icons/md';
 
 // Category decorative color map
 const categoryColors = {
-  coffee: { bg: '#fef3c7', text: '#92400e', icon: <FaCoffee /> },
-  drink: { bg: '#ecfdf5', text: '#065f46', icon: <FaCocktail /> },
-  shot: { bg: '#fdf4ff', text: '#7e22ce', icon: <FaCocktail /> },
-  pizza: { bg: '#fff7ed', text: '#c2410c', icon: <FaPizzaSlice /> },
-  burger: { bg: '#fef9c3', text: '#854d0e', icon: <FaHamburger /> },
-  sandwich: { bg: '#fef9c3', text: '#854d0e', icon: <FaHamburger /> },
-  milkshake: { bg: '#eff6ff', text: '#1d4ed8', icon: <GiMilkCarton /> },
-  fries: { bg: '#fefce8', text: '#a16207', icon: <GiFrenchFries /> },
-  pasta: { bg: '#fff1f2', text: '#9f1239', icon: <GiNoodles /> },
+  'hot-coffee': { bg: '#fef3c7', text: '#92400e', icon: <FaCoffee /> },
+  'hot-choco': { bg: '#fde68a', text: '#78350f', icon: <FaMugHot /> },
+  'hot-tea': { bg: '#d9f99d', text: '#3f6212', icon: <GiTeapot /> },
+  'icy-coffee': { bg: '#e0f2fe', text: '#0369a1', icon: <MdOutlineLocalCafe /> },
+  'iced-tea': { bg: '#ccfbf1', text: '#0f766e', icon: <GiIceCube /> },
+  'frappe': { bg: '#fce7f3', text: '#9d174d', icon: <GiMilkCarton /> },
+  'brain': { bg: '#e0e7ff', text: '#4338ca', icon: <FaSnowflake /> },
+  'mocktail': { bg: '#ecfdf5', text: '#065f46', icon: <FaCocktail /> },
+  'shake': { bg: '#eff6ff', text: '#1d4ed8', icon: <GiMilkCarton /> },
+  'extra': { bg: '#fef9c3', text: '#854d0e', icon: <FaPlusCircle /> },
   default: { bg: '#fef3c7', text: '#92400e', icon: <FaCoffee /> },
 };
 
@@ -80,7 +82,15 @@ const MenuCard = ({ item }) => {
 
       {/* Pricing */}
       <div className="relative z-10 pt-3 flex items-center justify-start border-t border-amber-100/60 mt-4">
-        <MenuPrice price={item.price} className="text-lg md:text-xl bg-gradient-to-r from-amber-800 to-amber-900 bg-clip-text text-transparent" />
+        <MenuPrice
+          price={item.price}
+          priceRegular={item.priceRegular}
+          priceLarge={item.priceLarge}
+          className="text-lg md:text-xl bg-gradient-to-r from-amber-800 to-amber-900 bg-clip-text text-transparent"
+        />
+        {item.priceRegular && item.priceLarge && (
+          <span className="text-[9px] text-stone-400 font-inter ml-2 uppercase tracking-wider">Reg / Lg</span>
+        )}
       </div>
 
     </div>

@@ -1,14 +1,14 @@
 import { hotCoffee } from './hotCoffee';
-import { coldCoffee } from './coldCoffee';
+import { hotCoffeeBlack } from './hotCoffeeBlack';
+import { hotChoco } from './hotChoco';
+import { hotTea } from './hotTea';
+import { icyCoffee } from './icyCoffee';
+import { icedTea } from './icedTea';
+import { frappe } from './frappe';
+import { brainFreezers } from './brainFreezers';
+import { mocktails } from './mocktails';
 import { milkshakes } from './milkshakes';
-import { fries } from './fries';
-import { sandwiches } from './sandwiches';
-import { signatureDrinks } from './signatureDrinks';
-import { softDrinks } from './softDrinks';
-import { pizza } from './pizza';
-import { pasta } from './pasta';
-import { burgers } from './burgers';
-import { shots } from './shots';
+import { extras } from './extras';
 
 // Helper: enrich items with categoryId and categoryName
 const enrich = (items, categoryId, categoryName) =>
@@ -16,94 +16,96 @@ const enrich = (items, categoryId, categoryName) =>
 
 export const categories = [
   {
-    id: "hot-coffee",
-    name: "Hot Coffee",
+    id: "hot-coffee-milk",
+    name: "Hot Coffee – With Milk",
     iconName: "FaCoffee",
-    items: enrich(hotCoffee, "hot-coffee", "Hot Coffee"),
+    items: enrich(hotCoffee, "hot-coffee-milk", "Hot Coffee – With Milk"),
+    column: "left",
+    hasSizes: true
+  },
+  {
+    id: "hot-coffee-black",
+    name: "Hot Coffee (Black)",
+    iconName: "FaCoffee",
+    items: enrich(hotCoffeeBlack, "hot-coffee-black", "Hot Coffee (Black)"),
+    column: "left",
+    hasSizes: true
+  },
+  {
+    id: "hot-choco",
+    name: "Hot Choco",
+    iconName: "FaMugHot",
+    items: enrich(hotChoco, "hot-choco", "Hot Choco"),
     column: "left"
   },
   {
-    id: "cold-coffee",
-    name: "Cold Coffee",
+    id: "hot-tea",
+    name: "Hot Tea",
+    iconName: "GiTeapot",
+    items: enrich(hotTea, "hot-tea", "Hot Tea"),
+    column: "left"
+  },
+  {
+    id: "icy-coffee",
+    name: "Icy Coffee",
     iconName: "MdOutlineLocalCafe",
-    items: enrich(coldCoffee, "cold-coffee", "Cold Coffee"),
-    column: "left"
+    items: enrich(icyCoffee, "icy-coffee", "Icy Coffee"),
+    column: "center"
   },
   {
-    id: "milkshakes",
-    name: "Milkshakes",
+    id: "iced-tea",
+    name: "Iced Tea",
+    iconName: "GiIceCube",
+    items: enrich(icedTea, "iced-tea", "Iced Tea"),
+    column: "center"
+  },
+  {
+    id: "frappe",
+    name: "Frappé",
     iconName: "GiMilkCarton",
-    items: enrich(milkshakes, "milkshakes", "Milkshakes"),
-    column: "left"
-  },
-  {
-    id: "french-fries",
-    name: "French Fries",
-    iconName: "GiFrenchFries",
-    items: enrich(fries, "french-fries", "French Fries"),
-    column: "left"
-  },
-  {
-    id: "sandwiches",
-    name: "Sandwiches",
-    iconName: "GiSandwich",
-    items: enrich(sandwiches, "sandwiches", "Sandwiches"),
-    column: "left"
-  },
-  {
-    id: "signature-drinks",
-    name: "Signature Drinks",
-    iconName: "BiDrink",
-    items: enrich(signatureDrinks, "signature-drinks", "Signature Drinks"),
+    items: enrich(frappe, "frappe", "Frappé"),
     column: "center"
   },
   {
-    id: "soft-drinks",
-    name: "Soft Drinks",
-    iconName: "GiSodaCan",
-    items: enrich(softDrinks, "soft-drinks", "Soft Drinks"),
+    id: "brain-freezers",
+    name: "Brain Freezers",
+    iconName: "FaSnowflake",
+    items: enrich(brainFreezers, "brain-freezers", "Brain Freezers"),
     column: "center"
   },
   {
-    id: "pizza",
-    name: "Veg Pizza",
-    iconName: "FaPizzaSlice",
-    items: enrich(pizza, "pizza", "Veg Pizza"),
+    id: "mocktails",
+    name: "Mocktails",
+    iconName: "FaCocktail",
+    items: enrich(mocktails, "mocktails", "Mocktails"),
     column: "right"
   },
   {
-    id: "pasta",
-    name: "Pasta",
-    iconName: "GiNoodles",
-    items: enrich(pasta, "pasta", "Pasta"),
+    id: "shakes",
+    name: "Shakes",
+    iconName: "GiMilkCarton",
+    items: enrich(milkshakes, "shakes", "Shakes"),
     column: "right"
   },
   {
-    id: "burgers",
-    name: "Burgers",
-    iconName: "FaHamburger",
-    items: enrich(burgers, "burgers", "Burgers"),
-    column: "right"
-  },
-  {
-    id: "shots",
-    name: "Shots",
-    iconName: "GiMartini",
-    items: enrich(shots, "shots", "Shots"),
+    id: "extras",
+    name: "Extras",
+    iconName: "FaPlusCircle",
+    items: enrich(extras, "extras", "Extras"),
     column: "right"
   }
 ];
 
 export const allItems = [
-  ...enrich(hotCoffee, "hot-coffee", "Hot Coffee"),
-  ...enrich(coldCoffee, "cold-coffee", "Cold Coffee"),
-  ...enrich(milkshakes, "milkshakes", "Milkshakes"),
-  ...enrich(fries, "french-fries", "French Fries"),
-  ...enrich(sandwiches, "sandwiches", "Sandwiches"),
-  ...enrich(signatureDrinks, "signature-drinks", "Signature Drinks"),
-  ...enrich(softDrinks, "soft-drinks", "Soft Drinks"),
-  ...enrich(pizza, "pizza", "Veg Pizza"),
-  ...enrich(pasta, "pasta", "Pasta"),
-  ...enrich(burgers, "burgers", "Burgers"),
-  ...enrich(shots, "shots", "Shots"),
+  ...enrich(hotCoffee, "hot-coffee-milk", "Hot Coffee – With Milk"),
+  ...enrich(hotCoffeeBlack, "hot-coffee-black", "Hot Coffee (Black)"),
+  ...enrich(hotChoco, "hot-choco", "Hot Choco"),
+  ...enrich(hotTea, "hot-tea", "Hot Tea"),
+  ...enrich(icyCoffee, "icy-coffee", "Icy Coffee"),
+  ...enrich(icedTea, "iced-tea", "Iced Tea"),
+  ...enrich(frappe, "frappe", "Frappé"),
+  ...enrich(brainFreezers, "brain-freezers", "Brain Freezers"),
+  ...enrich(mocktails, "mocktails", "Mocktails"),
+  ...enrich(milkshakes, "shakes", "Shakes"),
+  ...enrich(extras, "extras", "Extras"),
 ];

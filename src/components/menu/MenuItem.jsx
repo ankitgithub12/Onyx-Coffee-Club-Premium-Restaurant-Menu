@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const MenuItem = ({ item }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const hasDualPrice = item.priceRegular && item.priceLarge;
 
   return (
     <div
@@ -18,7 +19,7 @@ const MenuItem = ({ item }) => {
       <div className="grid grid-cols-12 gap-2 items-center">
 
         {/* Col 1: Item Name + Badges */}
-        <div className="col-span-6 flex items-center gap-2 min-w-0">
+        <div className={`${hasDualPrice ? 'col-span-5' : 'col-span-6'} flex items-center gap-2 min-w-0`}>
           {item.veg && <span className="veg-dot flex-shrink-0" title="Vegetarian" />}
 
           <div className="flex flex-col min-w-0">
@@ -37,8 +38,13 @@ const MenuItem = ({ item }) => {
         </div>
 
         {/* Col 2: Price */}
-        <div className="col-span-2 text-right">
-          <MenuPrice price={item.price} className="font-bold text-stone-800 group-hover:text-amber-800 transition-colors" />
+        <div className={`${hasDualPrice ? 'col-span-3' : 'col-span-2'} text-right`}>
+          <MenuPrice
+            price={item.price}
+            priceRegular={item.priceRegular}
+            priceLarge={item.priceLarge}
+            className="font-bold text-stone-800 group-hover:text-amber-800 transition-colors"
+          />
         </div>
 
         {/* Col 3: Main Ingredient */}

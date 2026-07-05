@@ -13,7 +13,7 @@ const SearchBar = ({ className = '' }) => {
       <input
         id="menu-search-bar"
         type="text"
-        placeholder="Search coffee, pizza, burgers..."
+        placeholder="Search coffee, frappé, shakes..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         className="w-full pl-11 pr-10 py-3.5 rounded-2xl border text-stone-800 font-inter text-sm outline-none transition-all placeholder-stone-400"

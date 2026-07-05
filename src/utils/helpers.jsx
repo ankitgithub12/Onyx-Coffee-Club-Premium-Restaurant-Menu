@@ -1,15 +1,16 @@
 import React from 'react';
 import { 
   FaCoffee, 
-  FaPizzaSlice, 
-  FaHamburger, 
   FaCocktail, 
   FaGlassMartini, 
   FaBorderAll, 
-  FaCheckCircle 
+  FaCheckCircle,
+  FaMugHot,
+  FaSnowflake,
+  FaPlusCircle
 } from 'react-icons/fa';
 import { MdOutlineLocalCafe } from 'react-icons/md';
-import { GiMilkCarton, GiFrenchFries, GiSandwich, GiSodaCan, GiNoodles } from 'react-icons/gi';
+import { GiMilkCarton, GiTeapot, GiIceCube } from 'react-icons/gi';
 
 /**
  * Formats a numeric price to Indian Rupees (INR)
@@ -30,25 +31,23 @@ export const getCategoryIcon = (iconName, className = '') => {
   switch (iconName) {
     case 'FaCoffee':
       return <FaCoffee className={className} />;
+    case 'FaMugHot':
+      return <FaMugHot className={className} />;
     case 'MdOutlineLocalCafe':
       return <MdOutlineLocalCafe className={className} />;
+    case 'GiTeapot':
+      return <GiTeapot className={className} />;
+    case 'GiIceCube':
+      return <GiIceCube className={className} />;
     case 'GiMilkCarton':
       return <GiMilkCarton className={className} />;
-    case 'GiFrenchFries':
-      return <GiFrenchFries className={className} />;
-    case 'GiSandwich':
-      return <GiSandwich className={className} />;
-    case 'BiDrink':
+    case 'FaSnowflake':
+      return <FaSnowflake className={className} />;
     case 'FaCocktail':
+    case 'BiDrink':
       return <FaCocktail className={className} />;
-    case 'GiSodaCan':
-      return <GiSodaCan className={className} />;
-    case 'FaPizzaSlice':
-      return <FaPizzaSlice className={className} />;
-    case 'GiNoodles':
-      return <GiNoodles className={className} />;
-    case 'FaHamburger':
-      return <FaHamburger className={className} />;
+    case 'FaPlusCircle':
+      return <FaPlusCircle className={className} />;
     case 'GiMartini':
     case 'FaGlassMartini':
       return <FaGlassMartini className={className} />;
