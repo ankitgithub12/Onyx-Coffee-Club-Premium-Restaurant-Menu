@@ -30,7 +30,7 @@ const Home = () => {
   };
 
   const stats = [
-    { value: '80+', label: 'Menu Items' },
+    { value: '115+', label: 'Menu Items' },
     { value: '100%', label: 'Vegetarian' },
     { value: '4.9★', label: 'Guest Rating' },
     { value: '2026', label: 'Est. Year' },

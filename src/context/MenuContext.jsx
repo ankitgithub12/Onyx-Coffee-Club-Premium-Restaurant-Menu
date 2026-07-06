@@ -7,11 +7,19 @@ export const MenuProvider = ({ children }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [vegOnly, setVegOnly] = useState(false);
   const [popularOnly, setPopularOnly] = useState(false);
+  const [menuSection, setMenuSection] = useState('beverages'); // 'beverages' | 'food'
   // Always light mode — remove dark class on mount
   useEffect(() => {
     document.documentElement.classList.remove('dark');
     localStorage.removeItem('theme');
   }, []);
+
+  // Reset category selection when switching sections
+  const switchMenuSection = (section) => {
+    setMenuSection(section);
+    setSelectedCategory('all');
+    setSearchQuery('');
+  };
 
   return (
     <MenuContext.Provider value={{
@@ -23,6 +31,8 @@ export const MenuProvider = ({ children }) => {
       setVegOnly,
       popularOnly,
       setPopularOnly,
+      menuSection,
+      switchMenuSection,
       darkMode: false,
       toggleDarkMode: () => {}
     }}>

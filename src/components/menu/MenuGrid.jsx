@@ -7,24 +7,22 @@ import MenuCategory from './MenuCategory';
 import RestaurantLogo from './RestaurantLogo';
 import LoadingSkeleton from '../common/LoadingSkeleton';
 import SlideUp from '../animations/SlideUp';
-import { FaCoffee, FaSearch } from 'react-icons/fa';
+import { FaCoffee, FaSearch, FaUtensils } from 'react-icons/fa';
 
 const MenuGrid = () => {
   const {
     searchQuery,
     selectedCategory,
     vegOnly,
-    popularOnly
+    popularOnly,
+    menuSection
   } = useContext(MenuContext);
 
-  // When "all" is selected, pass 'all' to useFilter so it skips category filtering
-  // When a specific category is selected, pass that category id
-  const processedCategories = categories.map((cat) => {
+  // Process ALL categories first so hook count stays constant across renders.
+  // Filtering by section happens AFTER the hooks to avoid the "fewer hooks" error.
+  const allProcessedCategories = categories.map((cat) => {
     const searchedItems = useSearch(cat.items, searchQuery);
 
-    // For category-level filtering:
-    // - If 'all' is selected, don't restrict by category (items already belong to this cat)
-    // - If a specific category is selected, only show items from that category
     const filteredItems = useFilter(searchedItems, {
       vegOnly,
       popularOnly,
@@ -37,6 +35,9 @@ const MenuGrid = () => {
     };
   });
 
+  // Now filter by the active section
+  const processedCategories = allProcessedCategories.filter(cat => cat.section === menuSection);
+
   // Check if we have any items across any category
   const totalProcessedItems = processedCategories.reduce((sum, cat) => sum + cat.items.length, 0);
 
@@ -47,10 +48,11 @@ const MenuGrid = () => {
 
   // If search matches nothing, show empty state
   if (totalProcessedItems === 0) {
+    const EmptyIcon = menuSection === 'food' ? FaUtensils : FaCoffee;
     return (
       <SlideUp className="text-center py-20 px-4">
         <div className="inline-flex p-5 bg-amber-50 rounded-full mb-4 text-amber-600 shadow-inner">
-          <FaCoffee className="text-4xl" />
+          <EmptyIcon className="text-4xl" />
         </div>
         <h4 className="font-playfair text-2xl font-bold text-amber-800 uppercase tracking-wide mt-2">
           No Items Found
@@ -77,26 +79,28 @@ const MenuGrid = () => {
   return (
     <div className="w-full relative">
       {/* Decorative Premium Floating Images (Visible on desktop/large screens) */}
-      <div className="hidden xl:block pointer-events-none select-none">
-        <img
-          src="/images/coffee_latte_art.png"
-          alt="Premium Latte Art"
-          className="menu-deco-image w-52 h-52 rounded-full absolute"
-          style={{ top: '5%', left: '-14rem', transform: 'rotate(-10deg)' }}
-        />
-        <img
-          src="/images/iced_frappe_glass.png"
-          alt="Premium Iced Frappé"
-          className="menu-deco-image w-56 h-56 rounded-full absolute"
-          style={{ top: '40%', right: '-15rem', transform: 'rotate(15deg)' }}
-        />
-        <img
-          src="/images/colorful_mocktails.png"
-          alt="Premium Mocktails"
-          className="menu-deco-image w-52 h-52 rounded-full absolute"
-          style={{ bottom: '15%', left: '-14rem', transform: 'rotate(5deg)' }}
-        />
-      </div>
+      {menuSection === 'beverages' && (
+        <div className="hidden xl:block pointer-events-none select-none">
+          <img
+            src="/images/coffee_latte_art.png"
+            alt="Premium Latte Art"
+            className="menu-deco-image w-52 h-52 rounded-full absolute"
+            style={{ top: '5%', left: '-14rem', transform: 'rotate(-10deg)' }}
+          />
+          <img
+            src="/images/iced_frappe_glass.png"
+            alt="Premium Iced Frappé"
+            className="menu-deco-image w-56 h-56 rounded-full absolute"
+            style={{ top: '40%', right: '-15rem', transform: 'rotate(15deg)' }}
+          />
+          <img
+            src="/images/colorful_mocktails.png"
+            alt="Premium Mocktails"
+            className="menu-deco-image w-52 h-52 rounded-full absolute"
+            style={{ bottom: '15%', left: '-14rem', transform: 'rotate(5deg)' }}
+          />
+        </div>
+      )}
 
       {/* 3 Column Grid for Desktop / Tablet Stacking */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start relative z-10">
@@ -110,7 +114,7 @@ const MenuGrid = () => {
           ))}
         </div>
 
-        {/* Center Column: Branding Center + Signature Drinks, Soft Drinks */}
+        {/* Center Column: Branding Center + categories */}
         <div className="space-y-6 flex flex-col">
           {/* Logo Branding - visible on desktop */}
           <div className="hidden lg:flex flex-col rounded-2xl p-8 glass-card border border-amber-100/30 relative overflow-hidden">

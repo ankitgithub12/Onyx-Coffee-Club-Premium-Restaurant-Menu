@@ -29,7 +29,7 @@ export const icyCoffee = [
   {
     id: "ic-4",
     name: "Cold Mocha",
-    price: null,
+    price: 130,
     ingredients: "Coffee, Chocolate, Milk, Ice",
     popular: false,
     veg: true,

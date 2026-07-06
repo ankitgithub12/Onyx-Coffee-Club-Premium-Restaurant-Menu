@@ -7,10 +7,13 @@ import {
   FaCheckCircle,
   FaMugHot,
   FaSnowflake,
-  FaPlusCircle
+  FaPlusCircle,
+  FaPizzaSlice,
+  FaHamburger,
+  FaGlassWhiskey
 } from 'react-icons/fa';
 import { MdOutlineLocalCafe } from 'react-icons/md';
-import { GiMilkCarton, GiTeapot, GiIceCube } from 'react-icons/gi';
+import { GiMilkCarton, GiTeapot, GiIceCube, GiNoodles, GiBread, GiFrenchFries } from 'react-icons/gi';
 
 /**
  * Formats a numeric price to Indian Rupees (INR)
@@ -51,6 +54,19 @@ export const getCategoryIcon = (iconName, className = '') => {
     case 'GiMartini':
     case 'FaGlassMartini':
       return <FaGlassMartini className={className} />;
+    // Food icons
+    case 'FaPizzaSlice':
+      return <FaPizzaSlice className={className} />;
+    case 'GiNoodles':
+      return <GiNoodles className={className} />;
+    case 'FaHamburger':
+      return <FaHamburger className={className} />;
+    case 'GiBread':
+      return <GiBread className={className} />;
+    case 'GiFrenchFries':
+      return <GiFrenchFries className={className} />;
+    case 'FaGlassWhiskey':
+      return <FaGlassWhiskey className={className} />;
     default:
       return <FaBorderAll className={className} />;
   }

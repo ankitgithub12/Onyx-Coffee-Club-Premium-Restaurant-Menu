@@ -18,6 +18,12 @@ const categoryColors = {
   'mocktail': { bg: '#ecfdf5', text: '#065f46', icon: <FaCocktail /> },
   'shake': { bg: '#eff6ff', text: '#1d4ed8', icon: <GiMilkCarton /> },
   'extra': { bg: '#fef9c3', text: '#854d0e', icon: <FaPlusCircle /> },
+  'pizza': { bg: '#fef3c7', text: '#c2410c', icon: <FaCoffee /> },
+  'pasta': { bg: '#fff7ed', text: '#9a3412', icon: <FaCoffee /> },
+  'burger': { bg: '#fef9c3', text: '#a16207', icon: <FaCoffee /> },
+  'sandwich': { bg: '#fff1f2', text: '#be123c', icon: <FaCoffee /> },
+  'french': { bg: '#fffbeb', text: '#b45309', icon: <FaCoffee /> },
+  'shot': { bg: '#ecfdf5', text: '#059669', icon: <FaCoffee /> },
   default: { bg: '#fef3c7', text: '#92400e', icon: <FaCoffee /> },
 };
 

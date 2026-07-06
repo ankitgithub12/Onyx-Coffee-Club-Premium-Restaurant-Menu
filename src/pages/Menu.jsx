@@ -18,7 +18,7 @@ const Menu = () => {
         <div className="flex flex-col items-center space-y-6">
           <SectionTitle
             title="The Serenity Menu"
-            subtitle="Freshly crafted, 100% vegetarian beverages — coffee, frappé, shakes, mocktails & more"
+            subtitle="Freshly crafted, 100% vegetarian — beverages, pizzas, pasta, burgers, sandwiches & more"
           />
           <SearchBar />
         </div>
