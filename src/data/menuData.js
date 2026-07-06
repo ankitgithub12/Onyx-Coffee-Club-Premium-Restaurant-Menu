@@ -1,20 +1,23 @@
-import { hotCoffee } from './hotCoffee';
-import { hotCoffeeBlack } from './hotCoffeeBlack';
-import { hotChoco } from './hotChoco';
-import { hotTea } from './hotTea';
-import { icyCoffee } from './icyCoffee';
-import { icedTea } from './icedTea';
-import { frappe } from './frappe';
-import { brainFreezers } from './brainFreezers';
-import { mocktails } from './mocktails';
-import { milkshakes } from './milkshakes';
-import { extras } from './extras';
-import { pizzas } from './pizzas';
-import { pasta } from './pasta';
-import { burgers } from './burgers';
-import { sandwiches } from './sandwiches';
-import { frenchFries } from './frenchFries';
-import { shots } from './shots';
+// ── Beverages ──
+import { hotCoffee } from './beverages/hotCoffee';
+import { hotCoffeeBlack } from './beverages/hotCoffeeBlack';
+import { hotChoco } from './beverages/hotChoco';
+import { hotTea } from './beverages/hotTea';
+import { icyCoffee } from './beverages/icyCoffee';
+import { icedTea } from './beverages/icedTea';
+import { frappe } from './beverages/frappe';
+import { brainFreezers } from './beverages/brainFreezers';
+import { mocktails } from './beverages/mocktails';
+import { milkshakes } from './beverages/milkshakes';
+import { extras } from './beverages/extras';
+
+// ── Food ──
+import { pizzas } from './food/pizzas';
+import { pasta } from './food/pasta';
+import { burgers } from './food/burgers';
+import { sandwiches } from './food/sandwiches';
+import { frenchFries } from './food/frenchFries';
+import { shots } from './food/shots';
 
 // Helper: enrich items with categoryId and categoryName
 const enrich = (items, categoryId, categoryName) =>

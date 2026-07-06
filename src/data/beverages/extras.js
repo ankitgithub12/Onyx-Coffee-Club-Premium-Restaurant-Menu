@@ -29,7 +29,7 @@ export const extras = [
   {
     id: "ex-4",
     name: "Whip Cream",
-    price: 30,
+    price: 20,
     ingredients: "Whipped Cream",
     popular: false,
     veg: true,

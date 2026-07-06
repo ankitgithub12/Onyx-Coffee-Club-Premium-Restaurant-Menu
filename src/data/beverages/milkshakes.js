@@ -47,7 +47,7 @@ export const milkshakes = [
   {
     id: "sh-6",
     name: "KitKat Shake",
-    price: 160,
+    price: 150,
     ingredients: "KitKat, Milk, Ice Cream",
     popular: true,
     veg: true,
@@ -119,7 +119,7 @@ export const milkshakes = [
   {
     id: "sh-14",
     name: "Rocher Shake",
-    price: 210,
+    price: 190,
     ingredients: "Ferrero Rocher, Milk, Ice Cream",
     popular: false,
     veg: true,
